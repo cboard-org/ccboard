@@ -75,3 +75,7 @@ typings/
 
 # next.js build output
 .next
+
+# visual studio 
+*.njsproj
+*.njsproj.user
