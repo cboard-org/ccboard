@@ -24,6 +24,13 @@
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.RECORD_AUDIO" />
         </config-file>
+        <resource-file src="public/res/values/colors.xml" target="/app/src/main/res/values/colors.xml" />
+        <icon background="@color/background" density="ldpi" foreground="public/images/pwa/android/android-launchericon-36-36.png" />
+        <icon background="@color/background" density="mdpi" foreground="public/images/pwa/android/android-launchericon-48-48.png" />
+        <icon background="@color/background" density="hdpi" foreground="public/images/pwa/android/android-launchericon-72-72.png" />
+        <icon background="@color/background" density="xhdpi" foreground="public/images/pwa/android/android-launchericon-96-96.png" />
+        <icon background="@color/background" density="xxhdpi" foreground="public/images/pwa/android/android-launchericon-144-144.png" />
+        <icon background="@color/background" density="xxxhdpi" foreground="public/images/pwa/android/android-launchericon-192-192.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
