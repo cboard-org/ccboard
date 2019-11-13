@@ -15,6 +15,7 @@
     "cordova-plugin-android-permissions": "^1.0.0",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-opener2": "^2.2.1",
+    "cordova-plugin-google-analytics": "^1.8.6",
     "phonegap-plugin-speech-synthesis": "^0.1.1"
   },
   "devDependencies": {
@@ -28,6 +29,9 @@
       "cordova-plugin-file": {},
       "cordova-plugin-file-opener2": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-google-analytics": {
+        "GMS_VERSION": "11.0.1"
       }
     },
     "platforms": [
