@@ -10,9 +10,9 @@
   "author": "Unicef",
   "license": "Apache-2.0",
   "dependencies": {
-    "cordova-android": "^8.0.0",
-    "cordova-browser": "^6.0.0",
-    "cordova-plugin-android-permissions": "^1.0.0",
+    "cordova-android": "8.1.0",
+    "cordova-browser": "6.0.0",
+    "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-opener2": "^2.2.1",
     "cordova-plugin-google-analytics": "^1.8.6",
@@ -30,9 +30,7 @@
       "cordova-plugin-file-opener2": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
-      "cordova-plugin-google-analytics": {
-        "GMS_VERSION": "11.0.1"
-      }
+      "cordova-plugin-google-analytics": {}
     },
     "platforms": [
       "android",
