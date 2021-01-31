@@ -8,15 +8,19 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: git submodule sync
-      - run: git submodule update --init
+      - run: 
+          name: Sync cboard module 
+          command: |
+            git submodule sync
+            git submodule update --init
       - run:
-          name: Install cboard dependencies 
+          name: Install and build cboard
           command: |
             cd cboard
             git checkout master 
             git pull
-            yarn install 
+            yarn install
+            npm run build
       - restore_cache:
           keys:
             # when lock file changes, use increasingly general patterns to restore cache
