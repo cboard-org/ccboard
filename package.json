@@ -10,8 +10,7 @@
   "author": "Unicef",
   "license": "Apache-2.0",
   "dependencies": {
-    "cordova-android": "8.1.0",
-    "cordova-browser": "6.0.0",
+    "cordova-browser": "^6.0.0",
     "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-opener2": "^2.2.1",
@@ -41,8 +40,8 @@
       "cordova-plugin-media-capture": {}
     },
     "platforms": [
-      "android",
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }
