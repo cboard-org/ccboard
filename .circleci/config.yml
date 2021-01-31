@@ -21,6 +21,11 @@ jobs:
             git pull
             yarn install
             npm run build
+      - run:
+          name: Copy build 
+          command: |
+            mkdir www
+            cp -R cboard/build www
       - restore_cache:
           keys:
             # when lock file changes, use increasingly general patterns to restore cache
