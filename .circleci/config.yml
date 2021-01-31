@@ -10,12 +10,12 @@ jobs:
       - checkout
       - run: git submodule sync
       - run: git submodule update --init
-      - run: cd cboard 
       - run:
-          name: Install dependencias 
+          name: Install cboard dependencies 
           command: |
+            cd cboard 
+            git pull
             yarn install 
-      - run: cd .. 
       - restore_cache:
           keys:
             # when lock file changes, use increasingly general patterns to restore cache
