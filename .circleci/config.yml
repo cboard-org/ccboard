@@ -1,20 +1,12 @@
 version: 2.1
 
 jobs:
-  build:
+  build_cboard:
     machine: # executor type
       image: ubuntu-2004:202010-01
     working_directory: ~/repo
     steps:
       - checkout
-      - run: 
-          name: Install gradle
-          command: |
-            wget https://services.gradle.org/distributions/gradle-4.0.2-bin.zip -P /tmp
-            sudo unzip -d /opt/gradle /tmp/gradle-*.zip
-            echo 'export GRADLE_HOME=/opt/gradle/gradle-4.0.2' >> $BASH_ENV
-            echo 'export PATH=$PATH:/opt/gradle/gradle-4.0.2/bin' >> $BASH_ENV
-            source $BASH_ENV
       - run: 
           name: Install node and yarn
           command: |
