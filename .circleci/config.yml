@@ -2,18 +2,21 @@ version: 2.1
 
 jobs:
   build:
-    machine: # executor type
-      image: ubuntu-2004:202010-01
+    docker:
+      - image: circleci/android:api-28-node
     working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
       - run: 
-          name: Install node and yarn
+          name: "Install gradle"
           command: |
-            sudo apt update
-            sudo apt install nodejs
-            sudo apt install npm
-            sudo apt install yarn
+            wget https://services.gradle.org/distributions/gradle-4.0.2-bin.zip -P /tmp
+            sudo unzip -d /opt/gradle /tmp/gradle-*.zip
+            echo 'export GRADLE_HOME=/opt/gradle/gradle-4.0.2' >> $BASH_ENV
+            echo 'export PATH=$PATH:/opt/gradle/gradle-4.0.2/bin' >> $BASH_ENV
+            source $BASH_ENV
       - run: 
           name: Sync cboard module 
           command: |
@@ -60,8 +63,8 @@ jobs:
       - run:
           name: Build Android 
           command: |
-            cordova platform add android
-            cordova build android --release
+            cordova platform add android --noresources
+            cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
 workflows:
   version: 2
