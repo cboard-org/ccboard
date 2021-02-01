@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Install and build cboard
           command: |
-            export NODE_OPTIONS="--max-old-space-size=8192"
+            export NODE_OPTIONS="--max-old-space-size=4096"
             cd cboard
             git checkout master 
             git pull
@@ -39,13 +39,18 @@ jobs:
           command: |
             yarn install --cache-folder ~/.cache/yarn
       - run:
-          name: "Install Cordova"
+          name: Install Cordova
           command: |
             sudo npm install -g --cache-folder ~/.cache/yarn cordova
       - save_cache:
           paths:
             - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Build Android 
+          command: |
+            cordova build android --release
+            cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
 workflows:
   version: 2
   build_test_image:
