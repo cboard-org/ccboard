@@ -60,6 +60,7 @@ jobs:
       - run:
           name: Build Android 
           command: |
+            cordova platform add android
             cordova build android --release
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
 workflows:
