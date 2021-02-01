@@ -38,21 +38,26 @@ jobs:
           command: |
             mkdir www
             cp -R cboard/build www
-      - restore_cache:
-          keys:
-            # when lock file changes, use increasingly general patterns to restore cache
-            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-packages-v1-{{ .Branch }}-
-            - yarn-packages-v1-
-      # Install and save node_modules to cache
+  build_cordova:
+    docker:
+      - image: circleci/android:api-28-node
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - run: 
+          name: Install gradle
+          command: |
+            wget https://services.gradle.org/distributions/gradle-4.0.2-bin.zip -P /tmp
+            sudo unzip -d /opt/gradle /tmp/gradle-*.zip
+            echo 'export GRADLE_HOME=/opt/gradle/gradle-4.0.2' >> $BASH_ENV
+            echo 'export PATH=$PATH:/opt/gradle/gradle-4.0.2/bin' >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: Install dependencias 
           command: |
             yarn install --cache-folder ~/.cache/yarn
-      - save_cache:
-          paths:
-            - ~/.cache/yarn
-          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Install Cordova
           command: |
@@ -64,11 +69,18 @@ jobs:
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
 workflows:
-  version: 2
-  build_test_image:
+  version: 2.1
+  build_apk:
     jobs:
-      - build:
+      - build_cboard:
           context: ccboard
+          filters:
+            branches:
+              only: master
+      - build_cordova:
+          context: ccboard
+          requires:
+            - build_cboard
           filters:
             branches:
               only: master
