@@ -14,13 +14,18 @@ jobs:
             git submodule sync
             git submodule update --init
       - run:
-          name: Install and build cboard
+          name: Install cboard
           command: |
-            NODE_OPTIONS=--max-old-space-size=4096
+            export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
             git checkout master 
             git pull
             yarn install
+      - run:
+          name: Build cboard
+          command: |
+            export NODE_OPTIONS=--max-old-space-size=8192
+            cd cboard
             npm run build
       - run:
           name: Copy build 
