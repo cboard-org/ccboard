@@ -49,14 +49,14 @@ jobs:
           name: Install dependencias 
           command: |
             yarn install --cache-folder ~/.cache/yarn
-      - run:
-          name: Install Cordova
-          command: |
-            sudo npm install -g --cache-folder ~/.cache/yarn cordova
       - save_cache:
           paths:
             - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Cordova
+          command: |
+            sudo npm install -g cordova
       - run:
           name: Build Android 
           command: |
