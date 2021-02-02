@@ -62,11 +62,13 @@ jobs:
           command: |
             sudo npm install -g cordova
             mkdir www
+            mkdir /tmp/workspace
       - attach_workspace:
-          at: www
+          at: /tmp/workspace
       - run:
           name: Copy Build
           command: |
+            cp -R /tmp/workspace/build/ www
             ls -a www
       - run:
           name: Build Android 
