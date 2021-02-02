@@ -36,7 +36,7 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
-            - build/*
+            - build
   build_cordova:
     docker:
       - image: circleci/android:api-28-node
