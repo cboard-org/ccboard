@@ -34,9 +34,9 @@ jobs:
             cd cboard
             npm run build
       - persist_to_workspace:
-          root: ./
+          root: cboard
           paths:
-            - build
+            - build/*
   build_cordova:
     docker:
       - image: circleci/android:api-28-node
