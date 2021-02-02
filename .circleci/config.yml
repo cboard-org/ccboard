@@ -33,11 +33,10 @@ jobs:
             export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
             npm run build
-      - run:
-          name: Copy build 
-          command: |
-            mkdir www
-            cp -R cboard/build www
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - build/*
   build_cordova:
     docker:
       - image: circleci/android:api-28-node
@@ -62,6 +61,14 @@ jobs:
           name: Install Cordova
           command: |
             sudo npm install -g cordova
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Copy Build
+          command: |
+            mkdir www
+            copy -R /tmp/workspace/build/ www/
+            ls -a www
       - run:
           name: Build Android 
           command: |
