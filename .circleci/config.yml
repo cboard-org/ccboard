@@ -34,7 +34,7 @@ jobs:
             cd cboard
             npm run build
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: ./
           paths:
             - build/*
   build_cordova:
@@ -61,13 +61,12 @@ jobs:
           name: Install Cordova
           command: |
             sudo npm install -g cordova
+            mkdir www
       - attach_workspace:
-          at: /tmp/workspace
+          at: www
       - run:
           name: Copy Build
           command: |
-            mkdir www
-            copy -R /tmp/workspace/build/ www/
             ls -a www
       - run:
           name: Build Android 
