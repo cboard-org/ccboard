@@ -54,15 +54,15 @@ jobs:
             echo 'export PATH=$PATH:/opt/gradle/gradle-4.0.2/bin' >> $BASH_ENV
             source $BASH_ENV
       - run:
-          name: Install dependencias 
-          command: |
-            yarn install --cache-folder ~/.cache/yarn
-      - run:
           name: Install Cordova
           command: |
             sudo npm install -g cordova
             mkdir www
             mkdir /tmp/workspace
+      - run:
+          name: Install dependencias 
+          command: |
+            yarn install --cache-folder ~/.cache/yarn
       - attach_workspace:
           at: /tmp/workspace
       - run:
