@@ -68,7 +68,8 @@ jobs:
       - run:
           name: Copy Build
           command: |
-            cp -R /tmp/workspace/build/ www
+            ls -a /tmp/workspace/build/
+            cp -R /tmp/workspace/build/. www
             ls -a www
       - run:
           name: Build Android 
