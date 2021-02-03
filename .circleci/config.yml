@@ -79,7 +79,6 @@ jobs:
             echo $JAVA_HOME
             echo $PATH
             java -version
-            ls -a /usr/lib/jvm/
             ls -a /usr/local/
             echo $JAVA_HOME
             echo $PATH
