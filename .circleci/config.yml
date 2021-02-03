@@ -79,7 +79,8 @@ jobs:
             echo $JAVA_HOME
             echo $PATH
             java -version
-            sudo update-alternatives --list java
+            ls -a /usr/lib/jvm/
+            ls -a /usr/local/
             echo $JAVA_HOME
             echo $PATH
             java -version
