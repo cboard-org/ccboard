@@ -77,6 +77,11 @@ jobs:
             echo $JAVA_HOME
             echo $PATH
             java -version
+            sudo apt-get update
+            sudo apt-get install openjdk-8-jdk
+            echo $JAVA_HOME
+            echo $PATH
+            java -version
             cordova platform add android --noresources
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
