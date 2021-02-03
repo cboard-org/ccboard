@@ -48,10 +48,10 @@ jobs:
       - run: 
           name: Install gradle
           command: |
-            wget https://services.gradle.org/distributions/gradle-4.0.2-bin.zip -P /tmp
+            wget https://services.gradle.org/distributions/gradle-6.8.1-bin.zip -P /tmp
             sudo unzip -d /opt/gradle /tmp/gradle-*.zip
-            echo 'export GRADLE_HOME=/opt/gradle/gradle-4.0.2' >> $BASH_ENV
-            echo 'export PATH=$PATH:/opt/gradle/gradle-4.0.2/bin' >> $BASH_ENV
+            echo 'export GRADLE_HOME=/opt/gradle/gradle-6.8.1' >> $BASH_ENV
+            echo 'export PATH=$PATH:/opt/gradle/gradle-6.8.1/bin' >> $BASH_ENV
             source $BASH_ENV
       - run:
           name: Install Cordova
