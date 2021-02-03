@@ -74,6 +74,9 @@ jobs:
       - run:
           name: Build Android 
           command: |
+            echo $JAVA_HOME
+            echo $PATH
+            java -version
             cordova platform add android --noresources
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
