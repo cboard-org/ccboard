@@ -40,7 +40,6 @@ jobs:
   build_cordova:
     docker:
       - image: circleci/android:api-29-node
-      - image: circleci/openjdk:8u265-jdk
     working_directory: ~/repo
     environment:
       JVM_OPTS: -Xmx3200m
@@ -84,6 +83,7 @@ jobs:
             cat /etc/apt/sources.list
             sudo apt-get update
             sudo apt-get install openjdk-8-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
             echo $JAVA_HOME
             echo $PATH
             java -version
