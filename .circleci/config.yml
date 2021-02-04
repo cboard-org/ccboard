@@ -59,18 +59,17 @@ jobs:
             sudo npm install -g cordova
             mkdir www
             mkdir /tmp/workspace
-      # - run:
-      #     name: Install dependencias 
-      #     command: |
-      #       yarn install --cache-folder ~/.cache/yarn
-      # - attach_workspace:
-      #     at: /tmp/workspace
-      # - run:
-      #     name: Copy Build
-      #     command: |
-      #       ls -a /tmp/workspace/build/
-      #       cp -R /tmp/workspace/build/. www
-      #      ls -a www
+      - run:
+          name: Install dependencias 
+          command: |
+            yarn install --cache-folder ~/.cache/yarn
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Copy Build
+          command: |
+            cp -R /tmp/workspace/build/. www
+           ls -a www
       - run:
           name: Install jdk 8 
           command: |
@@ -97,15 +96,15 @@ workflows:
   version: 2.1
   build_apk:
     jobs:
-      # - build_cboard:
-      #     context: ccboard
-      #     filters:
-      #       branches:
-      #         only: master
+      - build_cboard:
+          context: ccboard
+          filters:
+            branches:
+              only: master
       - build_cordova:
           context: ccboard
-          # requires:
-          #   - build_cboard
+          requires:
+            - build_cboard
           filters:
             branches:
               only: master
