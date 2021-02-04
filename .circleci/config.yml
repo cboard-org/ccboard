@@ -72,22 +72,27 @@ jobs:
       #       cp -R /tmp/workspace/build/. www
       #      ls -a www
       - run:
-          name: Build Android 
+          name: Install jdk 8 
           command: |
             echo "deb http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
-            cat /etc/apt/sources.list
             sudo apt-get update
             sudo apt-get install openjdk-8-jdk
             export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
             export PATH=$JAVA_HOME/bin:$PATH
             sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+      - run:
+          name: Build Android 
+          command: |
             cordova platform add android --noresources
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
             sudo /usr/lib/jvm/java-8-openjdk-amd64/bin/jarsigner -storepass $KEYPASS -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ccboard.keystore ccboard.apk ccboard
-            ls -a /opt/android/sdk/
-            ls -a /opt/android/sdk/build-tools/ 
             sudo /opt/android/sdk/build-tools/29.0.0/zipalign -v 4 ./ccboard.apk ./cboard.apk
+            mkdir -p /tmp/apk
+            cp -r cboard.apk /tmp/apk
+      - store_artifacts:
+          path: /tmp/apk
+          destination: apks
 workflows:
   version: 2.1
   build_apk:
