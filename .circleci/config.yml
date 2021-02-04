@@ -77,12 +77,12 @@ jobs:
             echo "deb http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             sudo apt-get update
             sudo apt-get install openjdk-8-jdk
-            export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-            export PATH=$JAVA_HOME/bin:$PATH
-            sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
       - run:
           name: Build Android 
           command: |
+            export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+            export PATH=$JAVA_HOME/bin:$PATH
+            sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
             cordova platform add android --noresources
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
