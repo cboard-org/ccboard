@@ -69,7 +69,7 @@ jobs:
           name: Copy Build
           command: |
             cp -R /tmp/workspace/build/. www
-           ls -a www
+            ls -a www
       - run:
           name: Install jdk 8 
           command: |
