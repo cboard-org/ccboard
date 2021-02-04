@@ -84,6 +84,7 @@ jobs:
             cordova platform add android --noresources
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
+            & /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/jarsigner -keypass $KEYPASS -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ccboard.keystore ccboard.apk ccboard
 workflows:
   version: 2.1
   build_apk:
