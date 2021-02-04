@@ -80,6 +80,7 @@ jobs:
             echo $PATH
             java -version
             ls -a /usr/local/
+            cat /etc/apt/sources.list
             echo $JAVA_HOME
             echo $PATH
             java -version
