@@ -80,7 +80,10 @@ jobs:
             echo $PATH
             java -version
             ls -a /usr/local/
+            sudo echo "deb http://ftp.us.debian.org/debian sid main" >> /etc/apt/sources.list
             cat /etc/apt/sources.list
+            sudo apt-get update
+            sudo apt-get install openjdk-8-jdk
             echo $JAVA_HOME
             echo $PATH
             java -version
