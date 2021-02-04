@@ -33,8 +33,6 @@ jobs:
             cd cboard
             sudo sed -i 's+"homepage": "https://app.cboard.io",+"homepage": ".",+g' package.json
             sudo sed -i 's+<meta charset="utf-8">+<meta charset="utf-8"><script src="cordova.js"></script>+g' public/index.html
-            cat package.json
-            cat public/index.html
       - run:
           name: Build cboard
           command: |
