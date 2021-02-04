@@ -74,11 +74,6 @@ jobs:
       - run:
           name: Build Android 
           command: |
-            lsb_release -a 
-            echo $JAVA_HOME
-            echo $PATH
-            java -version
-            ls -a /usr/local/
             echo "deb http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             cat /etc/apt/sources.list
             sudo apt-get update
@@ -86,9 +81,6 @@ jobs:
             export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
             export PATH=$JAVA_HOME/bin:$PATH
             sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-            echo $JAVA_HOME
-            echo $PATH
-            java -version
             cordova platform add android --noresources
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
