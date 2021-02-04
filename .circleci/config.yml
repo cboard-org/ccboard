@@ -85,6 +85,9 @@ jobs:
             cordova build android --release --verbose
             cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk
             sudo /usr/lib/jvm/java-8-openjdk-amd64/bin/jarsigner -storepass $KEYPASS -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ccboard.keystore ccboard.apk ccboard
+            ls -a /opt/android/sdk/
+            ls -a /opt/android/sdk/build-tools/ 
+            sudo /opt/android/sdk/build-tools/29.0.0/zipalign -v 4 ./ccboard.apk ./cboard.apk
 workflows:
   version: 2.1
   build_apk:
