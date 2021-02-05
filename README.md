@@ -1,5 +1,7 @@
 # Cboard Cordova - AAC communication board with text-to-speech for mobile devices
 
+[![cboard-org](https://circleci.com/gh/cboard-org/ccboard.svg?style=shield)](https://app.circleci.com/pipelines/github/cboard-org/ccboard)
+
 `git clone --recursive git@github.com:nous-/ccboard.git`
 
 This is a Cordova application that wraps the original [Cboard React application](https://github.com/cboard-org/cboard) to bring native mobile support. The Cboard react app is maintained to support Cordova detection, setup and bindings.
