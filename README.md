@@ -18,12 +18,12 @@ Text-to-speach (TTS) support is provided via [`phonegap-plugin-speech-synthesis`
 1. `git submodule update` - Get Cboard app 
 1. `npm i`
 1. `mkdir -p www` - Make root cordova app folder 
-1. `cordova platform add android` -or `cordova platform add electron` - Add Cordova platforms. *`www` folder must be present.*
+1. `cordova platform add android` or `cordova platform add electron` - Add Cordova platforms. *`www` folder must be present.*
 1. `cd cboard`
 1. `npm i`
 
 
-## Building 
+## Building Cboard (React project)
 
 You need to build the react.js app, and after that copy un cordova project:
 
@@ -32,18 +32,18 @@ You need to build the react.js app, and after that copy un cordova project:
 1. `cp -r ./build/* ../www`
 1. `cd ..`
 
-## Building and running 
+## Building and running Ccboard (Cordova project)
 
 Android: 
- `cordova run android --emulator`
+* `cordova run android --emulator`
 
 Electron: 
 
- `cordova build electron --release` For release
- `cordova build electron --debug ` For enable the dev tools
+ * `cordova build electron --release` For release
+ *  `cordova build electron --debug ` For enable the dev tools
  
 ## Android Platform
-## Generate Release APK
+### Generate Release APK
 
 1. Build `cordova build android --release`
 1. Copy `cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ccboard.apk`
@@ -52,7 +52,12 @@ Electron:
     1. Generate self-signed keys `keytool -genkey -v -keystore ccboard.keystore -alias ccboard -keyalg RSA -keysize 2048 -validity 100000`
     1. Sign `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ccboard.keystore ccboard.apk ccboard`
 
-## Debugging output
+### Debugging output
 
 For emulator console.log output, you can either run in the debugging under eg. `Android Studio`, or in Chrome, navigate to `chrome://inspect`, and select the remote target that shows up once the emulator starts.
 
+## Electron Platform
+
+You can find the documentation [here](https://cordova.apache.org/docs/en/10.x/guide/platforms/electron/index.html)
+
+In the root folder, you will find the file `settings.json` where are the configurations of the [BrowserWindow](https://www.electronjs.org/docs/api/browser-window#new-browserwindowoptions). This contains all the graphics options to modify the electron window.
