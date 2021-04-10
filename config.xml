@@ -47,6 +47,8 @@
     <platform name="electron">
     	<icon src="\www\images\artwork\logo_1x.png" target="app" />
     	<icon src="\www\images\artwork\logo_1x.png" target="installer" />
+        <preference name="ElectronSettingsFilePath" value="settings.json" />
+
 	</platform>
 
     <preference name="Fullscreen" value="true" /> 

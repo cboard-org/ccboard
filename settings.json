@@ -1,0 +1,12 @@
+{
+    "browserWindow": {
+        "height": 600,
+        "webPreferences":{
+            "devTools": true,
+            "nodeIntegration": false
+        },
+        "width": 800,
+        "autoHideMenuBar":true,
+        "icon": "/www/favicon.ico"
+    }
+}
