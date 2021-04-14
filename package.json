@@ -43,8 +43,7 @@
       "cordova-plugin-fullscreen": {},
       "cordova-plugin-media": {},
       "cordova-plugin-media-capture": {},
-      "git+https://github.com/cboard-org/cboard-speech-tts.git": {},
-      "cordova-plugin-cboard-speech-tts": {}
+      "git+https://github.com/cboard-org/cboard-speech-tts.git": {}
     },
     "platforms": [
       "browser",
