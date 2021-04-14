@@ -1,0 +1,9 @@
+{
+    "electron": {
+        "windows": {  
+        	"package": [
+                "portable",
+                "nsis"
+            ]}
+    }
+}
