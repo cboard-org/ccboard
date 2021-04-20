@@ -13,12 +13,19 @@ Text-to-speach (TTS) support is provided via [`phonegap-plugin-speech-synthesis`
 1. Android 
 1. Electron - Windows
 
+## Before setup
+
+You will need to modify the next files:
+
+* In `/cboard/package.json` change `"homepage": "https://app.cboard.io"` to `"homepage": "."`
+* In `/cboard/public/index.html` add `<script src="cordova.js"></script>` below `<head>` tag 
+
 ## One-time setup
 
 1. `git submodule update` - Get Cboard app 
 1. `npm i`
 1. `mkdir -p www` - Make root cordova app folder 
-1. `cordova platform add android` or `cordova platform add electron` - Add Cordova platforms. *`www` folder must be present.*
+1. `cordova platform add android` or `cordova platform add electron@2.0.0` - Add Cordova platforms. *`www` folder must be present.*
 1. `cd cboard`
 1. `npm i`
 
