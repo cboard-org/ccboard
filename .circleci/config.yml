@@ -43,7 +43,7 @@ jobs:
           root: cboard
           paths:
             - build/*
-  build_cordova:
+  build_android:
     docker:
       - image: circleci/android:api-29-node
     working_directory: ~/repo
@@ -102,7 +102,7 @@ jobs:
           destination: apks
 workflows:
   version: 2.1
-  build_apk:
+  build_cordova:
     jobs:
       - build_cboard:
           context: ccboard
@@ -112,7 +112,7 @@ workflows:
                 - master
                 - addElectronCirecleCi
 
-      - build_cordova:
+      - build_android:
           context: ccboard
           requires:
             - build_cboard
