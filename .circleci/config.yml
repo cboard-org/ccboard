@@ -108,8 +108,9 @@ workflows:
           context: ccboard
           filters:
             branches:
-              only: - master
-                    - addElectronCirecleCi
+              only: 
+                - master
+                - addElectronCirecleCi
 
       - build_cordova:
           context: ccboard
