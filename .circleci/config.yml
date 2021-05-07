@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  win: circleci/windows@2.2.0
+
 jobs:
   build_cboard:
     machine: # executor type
@@ -100,6 +103,30 @@ jobs:
       - store_artifacts:
           path: /tmp/apk
           destination: apks
+  build_electron:
+    executor:
+      name: win/default
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install cordova
+          command: |
+            npm install -g cordova
+            mkdir www
+            mkdir /tmp/workspace
+      - run:
+          name: Install dependecies
+          command: |
+            npm i
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Copy Build
+          command: |
+            Copy-Item ./tmp/workspace/build/. ./www
+            Get-ChildItem ./www
+      
 workflows:
   version: 2.1
   build_cordova:
@@ -118,4 +145,15 @@ workflows:
             - build_cboard
           filters:
             branches:
-              only: master
+              only: 
+                - master
+               # - addElectronCirecleCi
+      - build_electron:
+          context: ccboard
+          requires:
+            - build_cboard
+          filters:
+            branches:
+              only: 
+                - master
+                - addElectronCirecleCi
