@@ -46,6 +46,8 @@ jobs:
           root: cboard
           paths:
             - build/*
+      - store_artifacts:
+          path: build
   build_android:
     docker:
       - image: circleci/android:api-29-node
@@ -170,4 +172,4 @@ workflows:
             branches:
               only: 
                 - master
-                - addElectronCirecleCi
+                #- addElectronCirecleCi
