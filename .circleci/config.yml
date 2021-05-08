@@ -47,7 +47,7 @@ jobs:
           paths:
             - build/*
       - store_artifacts:
-          path: build
+          path: build/*
   build_android:
     docker:
       - image: circleci/android:api-29-node
