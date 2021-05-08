@@ -114,7 +114,7 @@ jobs:
           command: |
             npm install -g cordova
             mkdir www
-            mkdir /tmp/workspace
+            mkdir -p /tmp/workspace
       - run:
           name: Install dependecies
           command: |
@@ -126,6 +126,20 @@ jobs:
           command: |
             Copy-Item ./tmp/workspace/build/. ./www
             Get-ChildItem ./www
+            Get-ChildItem .
+      - run:
+          name: Add Electron Platform
+          command: |
+            cordova platform add electron@2.0.0
+      - run:
+          name: Build Electron App
+          command: |
+            cordova build electron --release
+            mkdir ./tmp/exe
+            Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
+      - store_artifacts:
+          path: ./tmp/exe
+
       
 workflows:
   version: 2.1
