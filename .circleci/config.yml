@@ -124,7 +124,7 @@ jobs:
       - run:
           name: Copy Build
           command: |
-            Copy-Item ./tmp/workspace/build/* ./www
+            Copy-Item ./tmp/workspace/build/* ./www -recurse
             "{0:N2}" -f ((Get-ChildItem -path ./www -recurse | Measure-Object -property length -sum ).sum /1MB) + " MB"
             Get-ChildItem ./www
             Get-ChildItem .
