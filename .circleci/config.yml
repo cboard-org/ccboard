@@ -125,12 +125,13 @@ jobs:
           name: Copy Build
           command: |
             Copy-Item ./tmp/workspace/build/* ./www
+            "{0:N2}" -f ((Get-ChildItem -path ./www -recurse | Measure-Object -property length -sum ).sum /1MB) + " MB"
             Get-ChildItem ./www
             Get-ChildItem .
       - run:
           name: Add Electron Platform
           command: |
-            cordova platform add electron@2.0.0
+            cordova platform add electron@2.0.0 --noresources
       - run:
           name: Build Electron App
           command: |
