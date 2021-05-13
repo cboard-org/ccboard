@@ -46,6 +46,12 @@ jobs:
           root: cboard
           paths:
             - build/*
+      - store_artifacts:
+          path: ./cboard/package.json
+      - store_artifacts:
+          path: ./cboard/public/index.html
+                
+
   build_android:
     docker:
       - image: circleci/android:api-29-node
