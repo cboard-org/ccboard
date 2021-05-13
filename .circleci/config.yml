@@ -42,17 +42,10 @@ jobs:
             export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
             npm run build
-      - run:
-          name: Generate zip file
-          command: |
-            cd cboard 
-            zip build.zip -r build
       - persist_to_workspace:
           root: cboard
           paths:
             - build/*
-      - store_artifacts:
-          path: ./cboard/build.zip
   build_android:
     docker:
       - image: circleci/android:api-29-node
@@ -121,17 +114,17 @@ jobs:
           command: |
             npm install -g cordova
             mkdir www
-            mkdir -p /tmp/workspace
+            mkdir -p ./tmp/workspace
       - run:
           name: Install dependecies
           command: |
-            yarn install --cache-folder ~/.cache/yarn
+            npm i
       - attach_workspace:
-          at: /tmp/workspace
+          at: ./tmp/workspace
       - run:
           name: Copy Build
           command: |
-            Copy-Item ./tmp/workspace/build/. ./www
+            Copy-Item ./tmp/workspace/build/* ./www
             Get-ChildItem ./www
             Get-ChildItem .
       - run:
