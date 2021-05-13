@@ -42,12 +42,17 @@ jobs:
             export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
             npm run build
+      - run:
+          name: Generate zip file
+          command: |
+            cd cboard 
+            zip build.zip -r build
       - persist_to_workspace:
           root: cboard
           paths:
             - build/*
       - store_artifacts:
-          path: build/*
+          path: ./cboard/build.zip
   build_android:
     docker:
       - image: circleci/android:api-29-node
@@ -120,7 +125,7 @@ jobs:
       - run:
           name: Install dependecies
           command: |
-            npm i
+            yarn install --cache-folder ~/.cache/yarn
       - attach_workspace:
           at: /tmp/workspace
       - run:
@@ -136,7 +141,7 @@ jobs:
       - run:
           name: Build Electron App
           command: |
-            cordova build electron --release
+            cordova build electron --release --verbose
             mkdir ./tmp/exe
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
@@ -172,4 +177,4 @@ workflows:
             branches:
               only: 
                 - master
-                #- addElectronCirecleCi
+                - addElectronCirecleCi
