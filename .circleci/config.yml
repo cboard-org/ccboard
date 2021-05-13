@@ -46,10 +46,13 @@ jobs:
           root: cboard
           paths:
             - build/*
+      - run:
+          name: Generate zip file
+          command: |
+            cd cboard 
+            zip build.zip -r build
       - store_artifacts:
-          path: ./cboard/package.json
-      - store_artifacts:
-          path: ./cboard/public/index.html
+          path: ./cboard/build.zip
                 
 
   build_android:
