@@ -148,7 +148,7 @@ jobs:
       - run:
           name: Build Electron App
           command: |
-            cordova build electron --debug --verbose
+            cordova build electron --release --verbose
             mkdir ./tmp/exe
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
