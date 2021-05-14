@@ -165,8 +165,6 @@ workflows:
             branches:
               only: 
                 - master
-                - addElectronCirecleCi
-
       - build_android:
           context: ccboard
           requires:
@@ -175,7 +173,6 @@ workflows:
             branches:
               only: 
                 - master
-                - addElectronCirecleCi
       - build_electron:
           context: ccboard
           requires:
@@ -184,4 +181,3 @@ workflows:
             branches:
               only: 
                 - master
-                - addElectronCirecleCi
