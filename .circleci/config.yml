@@ -53,6 +53,10 @@ jobs:
             zip build.zip -r build
       - store_artifacts:
           path: ./cboard/build.zip
+      - store_artifacts:
+          path: ./cboard/package.json
+      - store_artifacts:
+          path: ./cboard/public/index.html
                 
 
   build_android:
@@ -144,7 +148,7 @@ jobs:
       - run:
           name: Build Electron App
           command: |
-            cordova build electron --release --verbose
+            cordova build electron --debug --verbose
             mkdir ./tmp/exe
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
