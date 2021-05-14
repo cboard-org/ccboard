@@ -175,7 +175,7 @@ workflows:
             branches:
               only: 
                 - master
-               # - addElectronCirecleCi
+                - addElectronCirecleCi
       - build_electron:
           context: ccboard
           requires:
