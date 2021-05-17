@@ -149,8 +149,10 @@ jobs:
           name: Build Electron App
           command: |
             cordova build electron --release --verbose
-            cordoba build electron --debug --verbose
             mkdir ./tmp/exe
+            Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
+            cordova build electron --debug --verbose
+            Get-ChildItem *.exe | Rename-Item -NewName { $_.BaseName + ' - Debug' + $_.Extension}
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
           path: ./tmp/exe
