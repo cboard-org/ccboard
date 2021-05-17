@@ -149,6 +149,7 @@ jobs:
           name: Build Electron App
           command: |
             cordova build electron --release --verbose
+            cordoba build electron --debug --verbose
             mkdir ./tmp/exe
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
@@ -165,6 +166,7 @@ workflows:
             branches:
               only: 
                 - master
+                - addElectronCirecleCi
       - build_android:
           context: ccboard
           requires:
@@ -181,3 +183,4 @@ workflows:
             branches:
               only: 
                 - master
+                - addElectronCirecleCi
