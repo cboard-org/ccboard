@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  win: circleci/windows@2.2.0
+
 jobs:
   build_cboard:
     machine: # executor type
@@ -43,7 +46,20 @@ jobs:
           root: cboard
           paths:
             - build/*
-  build_cordova:
+      - run:
+          name: Generate zip file
+          command: |
+            cd cboard 
+            zip build.zip -r build
+      - store_artifacts:
+          path: ./cboard/build.zip
+      - store_artifacts:
+          path: ./cboard/package.json
+      - store_artifacts:
+          path: ./cboard/public/index.html
+                
+
+  build_android:
     docker:
       - image: circleci/android:api-29-node
     working_directory: ~/repo
@@ -100,19 +116,71 @@ jobs:
       - store_artifacts:
           path: /tmp/apk
           destination: apks
+  build_electron:
+    executor:
+      name: win/default
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install cordova
+          command: |
+            npm install -g cordova
+            mkdir www
+            mkdir -p ./tmp/workspace
+      - run:
+          name: Install dependecies
+          command: |
+            npm i
+      - attach_workspace:
+          at: ./tmp/workspace
+      - run:
+          name: Copy Build
+          command: |
+            Copy-Item ./tmp/workspace/build/* ./www -recurse
+            "{0:N2}" -f ((Get-ChildItem -path ./www -recurse | Measure-Object -property length -sum ).sum /1MB) + " MB"
+            Get-ChildItem ./www
+            Get-ChildItem .
+      - run:
+          name: Add Electron Platform
+          command: |
+            cordova platform add electron@2.0.0 --noresources
+      - run:
+          name: Build Electron App
+          command: |
+            cordova build electron --release 
+            mkdir ./tmp/exe
+            Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
+            cordova build electron --debug
+            Get-ChildItem ./platforms/electron/build/*.exe | Rename-Item -NewName { $_.BaseName + ' - Debug' + $_.Extension}
+            Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
+      - store_artifacts:
+          path: ./tmp/exe
+
+      
 workflows:
   version: 2.1
-  build_apk:
+  build_cordova:
     jobs:
       - build_cboard:
           context: ccboard
           filters:
             branches:
-              only: master
-      - build_cordova:
+              only: 
+                - master
+      - build_android:
           context: ccboard
           requires:
             - build_cboard
           filters:
             branches:
-              only: master
+              only: 
+                - master
+      - build_electron:
+          context: ccboard
+          requires:
+            - build_cboard
+          filters:
+            branches:
+              only: 
+                - master
