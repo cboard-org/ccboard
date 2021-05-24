@@ -38,6 +38,9 @@
         <icon background="@color/background" density="xhdpi" foreground="public/images/pwa/android/android-launchericon-96-96.png" />
         <icon background="@color/background" density="xxhdpi" foreground="public/images/pwa/android/android-launchericon-144-144.png" />
         <icon background="@color/background" density="xxxhdpi" foreground="public/images/pwa/android/android-launchericon-192-192.png" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" android:requestLegacyExternalStorage="true"/>
+        </edit-config>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
