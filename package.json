@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "cboard-speech-tts": "git+https://github.com/cboard-org/cboard-speech-tts.git",
+    "com.lampa.startapp": "^6.1.6",
     "cordova-android": "^9.1.0",
     "cordova-clipboard": "^1.3.0",
     "cordova-electron": "^2.0.0",
