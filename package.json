@@ -56,7 +56,8 @@
       },
       "cordova-plugin-cboard-speech-tts": {},
       "cordova-plugin-market": {},
-      "cordova-plugin-network-information": {}
+      "cordova-plugin-network-information": {},
+      "com.lampa.startapp": {}
     },
     "platforms": [
       "browser",
