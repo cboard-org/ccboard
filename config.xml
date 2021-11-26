@@ -1,12 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.unicef.cboard" version="1.15.2" xmlns="http://www.w3.org/ns/widgets"  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.unicef.cboard" version="1.16.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Cboard</name>
     <description>
       AAC communication board with text-to-speech.
     </description>
     <author email="support@cboard.io">Cboard team</author>
     <content src="index.html" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -14,7 +13,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <!-- Allow links to google and facebook and cboard API -->
     <allow-navigation href="https://*.cboard.io/*" />
     <allow-navigation href="https://*.google.com/*" />
     <allow-navigation href="https://*.facebook.com/*" />
@@ -25,6 +23,7 @@
         <preference name="HideKeyboardFormAccessoryBar" value="true" />
         <preference name="Fullscreen" value="true" />
         <preference name="StatusBarOverlaysWebView" value="true" />
+        <preference name="AndroidInsecureFileModeEnabled" value="true" />
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -38,20 +37,17 @@
         <icon background="@color/background" density="xxhdpi" foreground="public/images/pwa/android/android-launchericon-144-144.png" />
         <icon background="@color/background" density="xxxhdpi" foreground="public/images/pwa/android/android-launchericon-192-192.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:usesCleartextTraffic="true" android:requestLegacyExternalStorage="true"/>
+            <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
         </edit-config>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-
     <platform name="electron">
-    	<icon src="\www\images\artwork\logo_1x.png" target="app" />
-    	<icon src="\www\images\artwork\logo_1x.png" target="installer" />
+        <icon src="\www\images\artwork\logo_1x.png" target="app" />
+        <icon src="\www\images\artwork\logo_1x.png" target="installer" />
         <preference name="ElectronSettingsFilePath" value="settings.json" />
-
-	</platform>
-
-    <preference name="Fullscreen" value="true" /> 
+    </platform>
+    <preference name="Fullscreen" value="true" />
 </widget>
