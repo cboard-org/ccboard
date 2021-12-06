@@ -12,6 +12,7 @@
   "dependencies": {
     "cordova-browser": "^6.0.0",
     "cordova-plugin-googleplus": "8.5.2",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "electron-devtools-installer": "^3.1.1",
     "properties-parser": "0.3.1"
   },
@@ -59,7 +60,8 @@
       "cordova-plugin-network-information": {},
       "com.lampa.startapp": {},
       "cordova-plugin-androidx": {},
-      "cordova-plugin-androidx-adapter": {}
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "browser",
