@@ -24,6 +24,13 @@
         <preference name="Fullscreen" value="true" />
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="AndroidInsecureFileModeEnabled" value="true" />
+        <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
+            <queries>
+                <intent>
+                    <action android:name="android.intent.action.TTS_SERVICE" />
+                </intent>
+            </queries>
+        </config-file>
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
