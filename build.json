@@ -3,7 +3,8 @@
         "windows": {  
         	"package": [
                 "portable",
-                "nsis"
+                "nsis",
+                "appx"
             ]}
     }
 }
