@@ -34,7 +34,8 @@
     "cordova-plugin-media-capture": "^3.0.3",
     "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
-    "electron-devtools-installer": "^3.1.1"
+    "electron-devtools-installer": "^3.1.1",
+    "ionic-plugin-deeplinks": "^1.0.24"
   },
   "cordova": {
     "plugins": {
@@ -72,6 +73,24 @@
         "FACEBOOK_ANDROID_SDK_VERSION": "11.3.0",
         "FACEBOOK_IOS_SDK_VERSION": "11.1.0",
         "FACEBOOK_BROWSER_SDK_VERSION": "v11.0"
+      },
+      "ionic-plugin-deeplinks": {
+        "URL_SCHEME": "cboardorg",
+        "DEEPLINK_SCHEME": "https",
+        "DEEPLINK_HOST": "app.cboard.io",
+        "ANDROID_PATH_PREFIX": "/",
+        "ANDROID_2_PATH_PREFIX": "/",
+        "ANDROID_3_PATH_PREFIX": "/",
+        "ANDROID_4_PATH_PREFIX": "/",
+        "ANDROID_5_PATH_PREFIX": "/",
+        "DEEPLINK_2_SCHEME": " ",
+        "DEEPLINK_2_HOST": " ",
+        "DEEPLINK_3_SCHEME": " ",
+        "DEEPLINK_3_HOST": " ",
+        "DEEPLINK_4_SCHEME": " ",
+        "DEEPLINK_4_HOST": " ",
+        "DEEPLINK_5_SCHEME": " ",
+        "DEEPLINK_5_HOST": " "
       }
     },
     "platforms": [
