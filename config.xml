@@ -24,6 +24,7 @@
         <preference name="Fullscreen" value="true" />
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="AndroidInsecureFileModeEnabled" value="true" />
+        <preference name="android-minSdkVersion" value="21" />
         <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
             <queries>
                 <intent>
