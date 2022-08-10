@@ -24,6 +24,9 @@
         <preference name="Fullscreen" value="true" />
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="AndroidInsecureFileModeEnabled" value="true" />
+        <preference name="android-minSdkVersion" value="22" />
+        <preference name="android-targetSdkVersion" value="30" />
+        <preference name="android-compileSdkVersion" value="31" />
         <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
             <queries>
                 <intent>
@@ -43,6 +46,7 @@
         <icon background="@color/background" density="xhdpi" foreground="public/images/pwa/android/android-launchericon-96-96.png" />
         <icon background="@color/background" density="xxhdpi" foreground="public/images/pwa/android/android-launchericon-144-144.png" />
         <icon background="@color/background" density="xxxhdpi" foreground="public/images/pwa/android/android-launchericon-192-192.png" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="public/res/screen/android/splashscreen.xml" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
         </edit-config>
