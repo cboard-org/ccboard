@@ -108,7 +108,6 @@ jobs:
             cordova build android --release --verbose
             cordova build android --verbose
             cp platforms/android/app/build/outputs/bundle/release/app-release.aab ccboard.aab
-            sudo /usr/lib/jvm/java-8-openjdk-amd64/bin/jarsigner -storepass $KEYPASS -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ccboard.keystore ccboard.aab ccboard
             sudo /opt/android/sdk/build-tools/29.0.0/zipalign -v 4 ./ccboard.aab ./cboard.aab
             mkdir -p /tmp/apk
             cp -r cboard.aab /tmp/apk
