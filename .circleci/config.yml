@@ -162,10 +162,10 @@ workflows:
     jobs:
       - build_cboard:
           context: ccboard
-          filters:
-            branches:
-              only: 
-                - master
+          # filters:
+          #   branches:
+          #     only: 
+                # - master
       - build_android:
           context: ccboard
           requires:
