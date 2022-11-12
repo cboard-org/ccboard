@@ -5,6 +5,12 @@
                 "portable",
                 "nsis",
                 "appx"
-            ]}
+            ],
+            "signing": {
+                "release": {
+                    "certificateFile": "win-cert.pfx",
+                    "signingHashAlgorithms": "sha256"
+                }
+            }}
     }
 }
