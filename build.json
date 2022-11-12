@@ -3,13 +3,12 @@
         "windows": {  
         	"package": [
                 "portable",
-                "nsis",
-                "appx"
+                "nsis"
             ],
             "signing": {
                 "release": {
                     "certificateFile": "win-cert.pfx",
-                    "signingHashAlgorithms": "sha256"
+                    "certificatePassword": "morning"
                 }
             }}
     }

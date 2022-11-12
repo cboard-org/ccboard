@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@5.0
+  win: circleci/windows@2.2.0
 
 jobs:
   build_cboard:
@@ -149,9 +149,6 @@ jobs:
             cordova build electron --release 
             mkdir ./tmp/exe
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
-            cordova build electron --release 
-            mkdir ./tmp/appx
-            Copy-Item ./platforms/electron/build/*.appx ./tmp/appx
             cordova build electron --debug
             Get-ChildItem ./platforms/electron/build/*.exe | Rename-Item -NewName { $_.BaseName + ' - Debug' + $_.Extension}
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
