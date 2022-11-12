@@ -148,12 +148,16 @@ jobs:
           command: |
             cordova build electron --release 
             mkdir ./tmp/exe
+            mkdir ./tmp/appx
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
+            Copy-Item ./platforms/electron/build/*.appx ./tmp/appx
             cordova build electron --debug
             Get-ChildItem ./platforms/electron/build/*.exe | Rename-Item -NewName { $_.BaseName + ' - Debug' + $_.Extension}
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
           path: ./tmp/exe
+      - store_artifacts:
+          path: ./tmp/appx
 
       
 workflows:
