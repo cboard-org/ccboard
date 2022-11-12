@@ -7,8 +7,7 @@
             ],
             "signing": {
                 "release": {
-                    "certificateFile": "win-cert.pfx",
-                    "certificatePassword": "morning"
+                    "certificateFile": "win-cert.pfx"
                 }
             }}
     }
