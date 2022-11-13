@@ -59,6 +59,8 @@
       "cordova-plugin-market": {},
       "cordova-plugin-network-information": {},
       "com.lampa.startapp": {},
+      "cordova-plugin-androidx": {},
+      "cordova-plugin-androidx-adapter": {},
       "cordova-plugin-facebook-connect": {
         "APP_ID": "123456789",
         "APP_NAME": "myApplication",
