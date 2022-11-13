@@ -154,7 +154,6 @@ jobs:
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
           path: ./tmp/exe
-
       
 workflows:
   version: 2.1
