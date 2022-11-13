@@ -154,9 +154,6 @@ jobs:
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
           path: ./tmp/exe
-      - store_artifacts:
-          path: ./tmp/appx
-
       
 workflows:
   version: 2.1
@@ -164,10 +161,10 @@ workflows:
     jobs:
       - build_cboard:
           context: ccboard
-          # filters:
-          #   branches:
-          #     only: 
-                # - master
+          filters:
+            branches:
+              only: 
+                - master
       - build_android:
           context: ccboard
           requires:
@@ -180,7 +177,7 @@ workflows:
           context: ccboard
           requires:
             - build_cboard
-          # filters:
-          #   branches:
-          #     only: 
-          #       - master
+          filters:
+            branches:
+              only: 
+                - master
