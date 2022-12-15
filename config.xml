@@ -25,8 +25,7 @@
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="AndroidInsecureFileModeEnabled" value="true" />
         <preference name="android-minSdkVersion" value="22" />
-        <preference name="android-targetSdkVersion" value="30" />
-        <preference name="android-compileSdkVersion" value="31" />
+        <preference name="android-targetSdkVersion" value="32" />
         <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
             <queries>
                 <intent>
