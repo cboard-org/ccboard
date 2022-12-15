@@ -33,6 +33,7 @@
     "cordova-plugin-media": "^5.0.3",
     "cordova-plugin-media-capture": "^3.0.3",
     "cordova-plugin-network-information": "^3.0.0",
+    "cordova-plugin-purchase": "^11.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
     "electron-devtools-installer": "^3.1.1"
   },
@@ -72,6 +73,9 @@
         "FACEBOOK_ANDROID_SDK_VERSION": "11.3.0",
         "FACEBOOK_IOS_SDK_VERSION": "11.1.0",
         "FACEBOOK_BROWSER_SDK_VERSION": "v11.0"
+      },
+      "cordova-plugin-purchase": {
+        "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArZC5GigBKe45QGG7fw5+eQgontK8G9VScaItRzXfzHfq1m3KiTrNXsouBwB6D0DRKDJcGTgKvjjLZVQ7NDAIdTDzywhPQ/lyEC4s15J6JAgTlHcBc9AJzTXxGUB162a8EHhpiBIkUCvh3iDyvPlBshpKJ8HOlRQkNl5FjtT+EUL6EWHHhimp85rhqHkCQN7JKjIC97AHc3LIgisQxWNe13rRlBnWqocnG7fkIYqY8OvLPe61iiZW+6M0mIt/6XiT5dGT5C+4SS6G7urcEUIeEkMVQSfajgAfg5KePMyvIIn3HnRCVS04DKsO+i6sehbL7AplJl1tvAGdx/7F9NC+OwIDAQAB"
       }
     },
     "platforms": [
