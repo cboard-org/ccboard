@@ -57,11 +57,11 @@ jobs:
           path: ./cboard/package.json
       - store_artifacts:
           path: ./cboard/public/index.html
+            
                 
-
   build_android:
     docker:
-      - image: cimg/android:2022.09.2-node
+      - image: cimg/android:2022.08.1-node
     working_directory: ~/repo
     environment:
       JVM_OPTS: -Xmx3200m
