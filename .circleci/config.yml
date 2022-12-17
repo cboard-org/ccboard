@@ -60,8 +60,8 @@ jobs:
             
                 
   build_android:
-    docker:
-      - image: cimg/android:2022.08.1-node
+    orbs:
+      android: circleci/android@2.1.2
     working_directory: ~/repo
     environment:
       JVM_OPTS: -Xmx3200m
