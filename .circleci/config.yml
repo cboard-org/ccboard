@@ -108,11 +108,11 @@ jobs:
       - run:
           name: Build Android 
           command: |
-            export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-            export PATH=$JAVA_HOME/bin:$PATH
             sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
             export ANDROID_HOME=/home/circleci/android-sdk
-            export PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+            export PATH=$PATH:$ANDROID_HOME/tools
+            export PATH=$PATH:$ANDROID_HOME/tools/bin
+            export PATH=$PATH:$ANDROID_HOME/platform-tools
             cordova platform add android --noresources
             cordova build android --release --verbose
             cordova build android --verbose
