@@ -60,8 +60,8 @@ jobs:
             
                 
   build_android:
-    orbs:
-      android: circleci/android@2.1.2
+    docker:
+      - image: cimg/android:2022.08.1-node
     working_directory: ~/repo
     environment:
       JVM_OPTS: -Xmx3200m
@@ -104,6 +104,7 @@ jobs:
           name: List ruta
           command: |
             ls -a /home/circleci/
+            ls -a /home/circleci/android-sdk
       - run:
           name: Build Android 
           command: |
