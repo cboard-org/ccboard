@@ -105,6 +105,8 @@ jobs:
           command: |
             ls -a /home/circleci/
             ls -a /home/circleci/android-sdk
+            sdkmanager --list
+            sdkmanager "platform-tools" "platforms;android-33"
       - run:
           name: Build Android 
           command: |
