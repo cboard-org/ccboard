@@ -96,25 +96,17 @@ jobs:
           name: Install jdk 11 
           command: |
             echo "deb http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
             sudo apt-get update
             sudo apt-get install openjdk-11-jdk
       - run:
-          name: List ruta
+          name: Install build-tools 32.0.0
           command: |
-            ls -a /home/circleci/
-            ls -a /home/circleci/android-sdk
             sdkmanager "build-tools;32.0.0"
             sdkmanager --list
       - run:
           name: Build Android 
           command: |
             sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-            export ANDROID_HOME=/home/circleci/android-sdk
-            export PATH=$PATH:$ANDROID_HOME/tools
-            export PATH=$PATH:$ANDROID_HOME/tools/bin
-            export PATH=$PATH:$ANDROID_HOME/platform-tools
             cordova platform add android --noresources
             cordova build android --release --verbose
             cordova build android --verbose
