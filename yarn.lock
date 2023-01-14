@@ -1036,6 +1036,11 @@ cordova-plugin-network-information@^3.0.0:
   resolved "https://registry.yarnpkg.com/cordova-plugin-network-information/-/cordova-plugin-network-information-3.0.0.tgz#8b5546b56b44e6d2c69be7cc920d5e134cbb2b7f"
   integrity sha512-bBtP3PxIX8vshsfR0+F6co2e2cFLgjt18yKIdigzMwk6ANudWQ72RB3g2qMPyT6fBDWmUyE1Qd+bKQB/fZtQwQ==
 
+"cordova-plugin-purchase@git+https://github.com/j3k0/cordova-plugin-purchase.git#v13.0.3":
+  version "13.0.3"
+  uid "4ccd40ca8eafeeb1eb98f7d6d7d99ff17cfaa36f"
+  resolved "git+https://github.com/j3k0/cordova-plugin-purchase.git#4ccd40ca8eafeeb1eb98f7d6d7d99ff17cfaa36f"
+
 cordova-plugin-statusbar@^2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/cordova-plugin-statusbar/-/cordova-plugin-statusbar-2.4.3.tgz#cc557aef66c27484e0f7f045004040d03321f82d"
