@@ -13,8 +13,10 @@ jobs:
       - run: 
           name: Install node and yarn
           command: |
+            curl -s https://deb.nodesource.com/setup_16.x | sudo bash
             sudo apt update
-            sudo apt install nodejs
+            sudo apt install nodejs -y
+            node -v
             sudo apt install npm
             sudo apt install yarn
       - run: 
