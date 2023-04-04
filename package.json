@@ -51,7 +51,9 @@
       },
       "cordova-plugin-statusbar": {},
       "cordova-plugin-fullscreen": {},
-      "cordova-plugin-media": {},
+      "cordova-plugin-media": {
+        "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO"
+      },
       "cordova-plugin-media-capture": {},
       "git+https://github.com/cboard-org/cboard-speech-tts.git": {},
       "cordova-clipboard": {},
