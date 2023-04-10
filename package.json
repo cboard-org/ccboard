@@ -12,7 +12,6 @@
   "dependencies": {
     "cordova-browser": "^6.0.0",
     "cordova-plugin-facebook-connect": "3.2.0",
-    "cordova-plugin-googleplus": "8.5.2",
     "electron-devtools-installer": "^3.2.0",
     "properties-parser": "0.3.1"
   },
