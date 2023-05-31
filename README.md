@@ -96,3 +96,7 @@ B) On Xcode open AAC Cboard.xcworkspace
  5. Update to recommended settings and not allow changes on 'always embed swift standards libraries' to not break the voice record feature
 <img width="998" alt="image" src="https://user-images.githubusercontent.com/21298844/234080729-a93b8d34-87dd-40f1-a168-b6f3abacd039.png">
 
+ 6. To enable Facebook sign in the 'fbXXXXXXXXXXXXX' URL Scheme should be registered. In order to do it:
+    Under AAC Cboard Target > info > URL TYPES > 
+    add a new one with our APP bundle identifier and set the 'fbXXXXXXXXXXXXX' for the URL SCHEME field.
+<img width="888" alt="configure_FB_login" src="https://github.com/cboard-org/ccboard/assets/21298844/d306ba8a-d903-4ef2-b6d5-80f221338572">
