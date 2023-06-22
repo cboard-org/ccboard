@@ -84,8 +84,9 @@
       "cordova-plugin-purchase": {},
       "cordova-plugin-iosrtc": {
         "MANUAL_INIT_AUDIO_DEVICE": "FALSE"
-    },
-    "cordova-plugin-default-browser": {}
+      },
+      "cordova-plugin-sign-in-with-apple": {},
+      "cordova-plugin-default-browser": {}
     },
     "platforms": [
       "browser",
