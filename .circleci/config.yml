@@ -6,7 +6,7 @@ orbs:
 jobs:
   build_cboard:
     machine: # executor type
-      image: ubuntu-2004:202010-01
+      image: ubuntu-2004:2022.04.1
     working_directory: ~/repo
     steps:
       - checkout
@@ -15,6 +15,7 @@ jobs:
           command: |
             sudo apt update
             sudo apt install nodejs
+            node -v
             sudo apt install npm
             sudo apt install yarn
       - run: 
@@ -57,11 +58,11 @@ jobs:
           path: ./cboard/package.json
       - store_artifacts:
           path: ./cboard/public/index.html
+            
                 
-
   build_android:
     docker:
-      - image: circleci/android:api-29-node
+      - image: cimg/android:2022.08.1-node
     working_directory: ~/repo
     environment:
       JVM_OPTS: -Xmx3200m
@@ -93,25 +94,27 @@ jobs:
             cp -R /tmp/workspace/build/. www
             ls -a www
       - run:
-          name: Install jdk 8 
+          name: Install jdk 11 
           command: |
-            echo "deb http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
-            sudo apt-get update
-            sudo apt-get install openjdk-8-jdk
+            sudo apt-get update && sudo apt-get upgrade
+            sudo apt-get install openjdk-11-jdk
+      - run:
+          name: Install build-tools 32.0.0
+          command: |
+            sdkmanager "build-tools;32.0.0"
+            sdkmanager --list
       - run:
           name: Build Android 
           command: |
-            export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+            export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
             export PATH=$JAVA_HOME/bin:$PATH
-            sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
             cordova platform add android --noresources
             cordova build android --release --verbose
             cordova build android --verbose
             cp platforms/android/app/build/outputs/bundle/release/app-release.aab ccboard.aab
-            sudo /usr/lib/jvm/java-8-openjdk-amd64/bin/jarsigner -storepass $KEYPASS -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ccboard.keystore ccboard.aab ccboard
-            sudo /opt/android/sdk/build-tools/29.0.0/zipalign -v 4 ./ccboard.aab ./cboard.aab
             mkdir -p /tmp/apk
-            cp -r cboard.aab /tmp/apk
+            cp -r ccboard.aab /tmp/apk
             cp -r platforms/android/app/build/outputs/apk/debug/app-debug.apk /tmp/apk
       - store_artifacts:
           path: /tmp/apk
@@ -156,7 +159,6 @@ jobs:
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
           path: ./tmp/exe
-
       
 workflows:
   version: 2.1

@@ -66,3 +66,37 @@ For emulator console.log output, you can either run in the debugging under eg. `
 You can find the documentation [here](https://cordova.apache.org/docs/en/10.x/guide/platforms/electron/index.html)
 
 In the root folder, you will find the file `settings.json` where are the configurations of the [BrowserWindow](https://www.electronjs.org/docs/api/browser-window#new-browserwindowoptions). This contains all the graphics options to modify the electron window.
+
+## IOS Platform
+
+You can find the documentation [here](https://cordova.apache.org/docs/en/11.x/guide/platforms/ios/index.html)
+
+A) Install cocoapods using `sudo gem install cocoapods`.
+
+B) On Xcode open AAC Cboard.xcworkspace
+
+ 1. Select a group for the iOS sign-in certificate.
+ 2. Add the environment variables for the 'Google Plus Plugin' to XCODE:
+    Open your Xcode project and select the project from the project navigator.
+    Select the "Build Settings" tab in the main area of the window.
+    Search for "User-Defined" in the search bar.
+    Click the "+" button to add a new user-defined setting.
+    Enter the name of the environment variable you want to set, such as MY_ENV_VAR.
+    Enter the value of the environment variable you want to set, such as my-value.
+    Save the changes.
+    
+    set the envs using values from `credentials.plist` file. (Obtain the file from firebase console):
+    IOS_REVERSED_CLIENT_ID
+    IOS_WEB_APPLICATION_CLIENT_ID
+
+    Using this plugin, it is not possible to use the device simulator (at least for now).
+    
+ 3. Some targets within pods will require enabling 'bitcode', including one in AAC Cboard => libCordova.a
+ 4. Set a swift-language-version >= 4.2 . This should be settled on AAC Cboard Target under swift compiler - language Close
+ 5. Update to recommended settings and not allow changes on 'always embed swift standards libraries' to not break the voice record feature
+<img width="998" alt="image" src="https://user-images.githubusercontent.com/21298844/234080729-a93b8d34-87dd-40f1-a168-b6f3abacd039.png">
+
+ 6. To enable Facebook sign in the 'fbXXXXXXXXXXXXX' URL Scheme should be registered. In order to do it:
+    Under AAC Cboard Target > info > URL TYPES > 
+    add a new one with our APP bundle identifier and set the 'fbXXXXXXXXXXXXX' for the URL SCHEME field.
+<img width="888" alt="configure_FB_login" src="https://github.com/cboard-org/ccboard/assets/21298844/d306ba8a-d903-4ef2-b6d5-80f221338572">

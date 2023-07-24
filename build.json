@@ -4,6 +4,11 @@
         	"package": [
                 "portable",
                 "nsis"
-            ]}
+            ],
+            "signing": {
+                "release": {
+                    "certificateFile": "win-cert.pfx"
+                }
+            }}
     }
 }
