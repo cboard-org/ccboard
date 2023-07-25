@@ -27,6 +27,7 @@
         <preference name="AndroidLaunchMode" value="singleTask" />
         <preference name="android-minSdkVersion" value="22" />
         <preference name="android-targetSdkVersion" value="32" />
+        <preference name="resizeOnFullScreen" value="true" />
         <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
             <queries>
                 <intent>
