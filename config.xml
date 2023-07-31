@@ -27,7 +27,7 @@
         <preference name="AndroidLaunchMode" value="singleTask" />
         <preference name="android-minSdkVersion" value="22" />
         <preference name="android-targetSdkVersion" value="32" />
-        <preference name="resizeOnFullScreen" value="true" />
+        <preference name="resizeOnFullScreen" value="false" />
         <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
             <queries>
                 <intent>
@@ -87,6 +87,7 @@
         <icon src="public/images/artwork/100.png" width="100" height="100" />
         <!-- iTunes Marketing Image -->
         <icon src="public/images/artwork/1024.png" width="1024" height="1024" />
+        <preference name="KeyboardResize" value="false" />
     </platform>
     <platform name="electron">
         <icon src="\www\images\artwork\logo_1x.png" target="app" />
