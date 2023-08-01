@@ -163,7 +163,7 @@ jobs:
       - run:
           name: Add Electron Platform
           command: |
-            cordova platform add electron@2.0.0 --noresources
+            cordova platform add electron@3.0.0 --noresources
       - run:
           name: Build Electron App
           command: |
