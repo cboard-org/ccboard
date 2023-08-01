@@ -150,7 +150,13 @@ jobs:
           command: |
             nvm list
             nvm install 16.16.0
-            nvm use 16.16.0
+            npm install -g npm@latest
+            nvm use 16.16.0    
+      - run:
+          name: verify node and npm version
+          command: |
+            node -v
+            npm -v
       - run:
           name: Install cordova
           command: |
@@ -196,6 +202,7 @@ workflows:
             branches:
               only: 
                 - master
+                - fix/circleciElectron
       - build_android:
           context: ccboard
           requires:
@@ -212,3 +219,4 @@ workflows:
             branches:
               only: 
                 - master
+                - fix/circleciElectron
