@@ -145,15 +145,14 @@ jobs:
           name: Install NVM
           command: choco install nvm
       - run:
-          name: Install Node 16.16.0
+          name: Install Node 16.20.1	
           shell: bash.exe
           command: |
             nvm list
-            nvm install 16.16.0
-            npm install -g npm@latest
-            nvm use 16.16.0    
+            nvm install 16.20.1	
+            nvm use 16.20.1	  
       - run:
-          name: verify node and npm version
+          name: Verify node and npm version
           command: |
             node -v
             npm -v
