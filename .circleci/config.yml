@@ -142,6 +142,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install NVM
+          command: choco install nvm
+      - run:
+          name: Install Node 16.16.0
+          shell: bash.exe
+          command: |
+            nvm list
+            nvm install 16.16.0
+            nvm use 16.16.0
+            node --version
+      - run:
           name: Install cordova
           command: |
             npm install -g cordova
