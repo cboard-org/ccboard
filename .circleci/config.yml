@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@2.2.0
+  win: circleci/windows@5.0
 
 jobs:
   build_cboard:
@@ -142,15 +142,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install NVM
-          command: choco install nvm
-      - run:
-          name: Install Node 16.16.0
-          shell: bash.exe
+          name: Install Node 16.20.1	
           command: |
             nvm list
-            nvm install 16.16.0
-            nvm use 16.16.0
+            nvm install 16.20.1	
+            nvm use 16.20.1	  
+      - run:
+          name: Verify node, npm and nvm version
+          command: |
+            node -v
+            npm -v
+            nvm version
       - run:
           name: Install cordova
           command: |
