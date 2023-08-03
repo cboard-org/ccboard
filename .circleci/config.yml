@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@2.2.0
+  win: circleci/windows@5.0
 
 jobs:
   build_cboard:
@@ -146,12 +146,10 @@ jobs:
           command: |
             node -v
             nvm version
-            choco install nvm --version=1.1.9
       - run:
           name: Install Node 16.20.1	
           command: |
             nvm list
-            nvm uninstall 14.17.5
             nvm install 16.20.1	
             nvm use 16.20.1	  
       - run:
