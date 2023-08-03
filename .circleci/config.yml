@@ -142,18 +142,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install NVM
-          command: |
-            node -v
-            nvm version
-      - run:
           name: Install Node 16.20.1	
           command: |
             nvm list
             nvm install 16.20.1	
             nvm use 16.20.1	  
       - run:
-          name: Verify node and npm version
+          name: Verify node, npm and nvm version
           command: |
             node -v
             npm -v
@@ -203,7 +198,6 @@ workflows:
             branches:
               only: 
                 - master
-                - fix/circleciElectron
       - build_android:
           context: ccboard
           requires:
@@ -220,4 +214,3 @@ workflows:
             branches:
               only: 
                 - master
-                - fix/circleciElectron
