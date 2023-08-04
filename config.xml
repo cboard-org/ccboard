@@ -88,6 +88,9 @@
         <!-- iTunes Marketing Image -->
         <icon src="public/images/artwork/1024.png" width="1024" height="1024" />
         <preference name="KeyboardResize" value="false" />
+        <preference name="scheme" value="app" />
+        <preference name="hostname" value="localhost" />
+        <preference name="iosPersistentFileLocation" value="Compatibility" />
     </platform>
     <platform name="electron">
         <icon src="\www\images\artwork\logo_1x.png" target="app" />
