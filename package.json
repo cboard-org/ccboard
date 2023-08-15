@@ -12,6 +12,7 @@
   "dependencies": {
     "cordova-browser": "^6.0.0",
     "cordova-plugin-facebook-connect": "3.2.0",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "electron-devtools-installer": "^3.2.0",
     "properties-parser": "0.3.1"
   },
@@ -28,8 +29,8 @@
     "cordova-plugin-default-browser": "^1.0.0",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-opener2": "^2.2.1",
+    "cordova-plugin-firebasex": "^16.1.0",
     "cordova-plugin-fullscreen": "^1.3.0",
-    "cordova-plugin-google-analytics": "git+https://github.com/danwilson/google-analytics-plugin.git",
     "cordova-plugin-googleplus": "^8.5.2",
     "cordova-plugin-market": "git+https://github.com/xmartlabs/cordova-plugin-market.git",
     "cordova-plugin-iosrtc": "^8.0.3",
@@ -39,7 +40,8 @@
     "cordova-plugin-purchase": "git+https://github.com/j3k0/cordova-plugin-purchase.git#v13.0.3",
     "cordova-plugin-sign-in-with-apple": "^0.1.2",
     "cordova-plugin-statusbar": "^2.4.3",
-    "electron-devtools-installer": "^3.1.1"
+    "electron-devtools-installer": "^3.1.1",
+    "ionic-plugin-deeplinks": "^1.0.24"
   },
   "cordova": {
     "plugins": {
@@ -47,9 +49,6 @@
       "cordova-plugin-file": {},
       "cordova-plugin-file-opener2": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      },
-      "cordova-plugin-google-analytics": {
-        "GMS_VERSION": "11.0.1"
       },
       "cordova-plugin-statusbar": {},
       "cordova-plugin-fullscreen": {},
@@ -82,11 +81,57 @@
         "FACEBOOK_BROWSER_SDK_VERSION": "v11.0"
       },
       "cordova-plugin-purchase": {},
+      "ionic-plugin-deeplinks": {
+        "URL_SCHEME": "cboardorg",
+        "DEEPLINK_SCHEME": "https",
+        "DEEPLINK_HOST": "app.cboard.io",
+        "ANDROID_PATH_PREFIX": "/",
+        "ANDROID_2_PATH_PREFIX": "/",
+        "ANDROID_3_PATH_PREFIX": "/",
+        "ANDROID_4_PATH_PREFIX": "/",
+        "ANDROID_5_PATH_PREFIX": "/",
+        "DEEPLINK_2_SCHEME": " ",
+        "DEEPLINK_2_HOST": " ",
+        "DEEPLINK_3_SCHEME": " ",
+        "DEEPLINK_3_HOST": " ",
+        "DEEPLINK_4_SCHEME": " ",
+        "DEEPLINK_4_HOST": " ",
+        "DEEPLINK_5_SCHEME": " ",
+        "DEEPLINK_5_HOST": " "
+      },
+      "cordova-plugin-purchase": {
+      },
       "cordova-plugin-iosrtc": {
         "MANUAL_INIT_AUDIO_DEVICE": "FALSE"
       },
       "cordova-plugin-sign-in-with-apple": {},
-      "cordova-plugin-default-browser": {}
+      "cordova-plugin-default-browser": {},
+      "cordova-plugin-firebasex": {
+        "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+        "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+        "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+        "FIREBASE_FCM_AUTOINIT_ENABLED": "true",
+        "ANDROID_ICON_ACCENT": "#FF00FFFF",
+        "ANDROID_FIREBASE_PERFORMANCE_MONITORING": "false",
+        "ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION": "11.0.1",
+        "ANDROID_PLAY_SERVICES_AUTH_VERSION": "20.5.0",
+        "ANDROID_FIREBASE_ANALYTICS_VERSION": "21.2.2",
+        "ANDROID_FIREBASE_MESSAGING_VERSION": "23.1.2",
+        "ANDROID_FIREBASE_CONFIG_VERSION": "21.4.0",
+        "ANDROID_FIREBASE_PERF_VERSION": "20.3.2",
+        "ANDROID_FIREBASE_AUTH_VERSION": "22.0.0",
+        "ANDROID_FIREBASE_INAPPMESSAGING_VERSION": "20.3.2",
+        "ANDROID_FIREBASE_FIRESTORE_VERSION": "24.6.0",
+        "ANDROID_FIREBASE_FUNCTIONS_VERSION": "20.3.0",
+        "ANDROID_FIREBASE_IID_VERSION": "21.1.0",
+        "ANDROID_FIREBASE_INSTALLATIONS_VERSION": "17.1.3",
+        "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "18.3.7",
+        "ANDROID_FIREBASE_CRASHLYTICS_NDK_VERSION": "18.3.7",
+        "ANDROID_GSON_VERSION": "2.9.0",
+        "ANDROID_FIREBASE_PERF_GRADLE_PLUGIN_VERSION": "1.4.2",
+        "ANDROID_GRPC_OKHTTP": "1.46.0"
+      },
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "browser",

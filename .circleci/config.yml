@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@2.2.0
+  win: circleci/windows@5.0
 
 jobs:
   build_cboard:
@@ -10,6 +10,14 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run:
+          name: Decrypt the Google services file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  google-services.json.cypher \
+            -out google-services.json \
+            -k $KEY
       - run: 
           name: Install node and yarn
           command: |
@@ -68,6 +76,14 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
+      - run:
+          name: Decrypt the Google services file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  google-services.json.cypher \
+            -out google-services.json \
+            -k $KEY
       - run: 
           name: Install gradle
           command: |
@@ -126,6 +142,18 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Node 16.20.1	
+          command: |
+            nvm list
+            nvm install 16.20.1	
+            nvm use 16.20.1	  
+      - run:
+          name: Verify node, npm and nvm version
+          command: |
+            node -v
+            npm -v
+            nvm version
+      - run:
           name: Install cordova
           command: |
             npm install -g cordova
@@ -147,7 +175,7 @@ jobs:
       - run:
           name: Add Electron Platform
           command: |
-            cordova platform add electron@2.0.0 --noresources
+            cordova platform add electron@3.0.0 --noresources
       - run:
           name: Build Electron App
           command: |

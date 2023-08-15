@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.unicef.cboard" version="1.28.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.unicef.cboard" version="1.30.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>AAC Cboard</name>
     <description>
       AAC communication board with text-to-speech.
@@ -24,8 +24,10 @@
         <preference name="Fullscreen" value="true" />
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="AndroidInsecureFileModeEnabled" value="true" />
+        <preference name="AndroidLaunchMode" value="singleTask" />
         <preference name="android-minSdkVersion" value="22" />
         <preference name="android-targetSdkVersion" value="32" />
+        <preference name="resizeOnFullScreen" value="false" />
         <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
             <queries>
                 <intent>
@@ -85,6 +87,10 @@
         <icon src="public/images/artwork/100.png" width="100" height="100" />
         <!-- iTunes Marketing Image -->
         <icon src="public/images/artwork/1024.png" width="1024" height="1024" />
+        <preference name="KeyboardResize" value="false" />
+        <preference name="scheme" value="app" />
+        <preference name="hostname" value="localhost" />
+        <preference name="iosPersistentFileLocation" value="Compatibility" />
     </platform>
     <platform name="electron">
         <icon src="\www\images\artwork\logo_1x.png" target="app" />
