@@ -110,3 +110,8 @@ B) On Xcode open AAC Cboard.xcworkspace
 	<key>UIFileSharingEnabled</key>
 	<true/>
 ```
+
+### Create app size report
+
+In order to know the size of the app before submitting it to the app store connect. 
+Follow this steps: https://developer.apple.com/documentation/xcode/reducing-your-app-s-size#Create-the-app-size-report
