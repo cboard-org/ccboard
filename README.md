@@ -101,6 +101,8 @@ B) On Xcode open AAC Cboard.xcworkspace
     add a new one with our APP bundle identifier and set the 'fbXXXXXXXXXXXXX' for the URL SCHEME field.
 <img width="888" alt="configure_FB_login" src="https://github.com/cboard-org/ccboard/assets/21298844/d306ba8a-d903-4ef2-b6d5-80f221338572">
 
+In case to deploy for production. Under cordova-util.js from cboard app source replace the FACEBOOK_APP_ID and FACEBOOK_APP_NAME with the production values.
+
 7. In order to allow users to open files created by the Export feature:
   Edit the plist file 'AAC Cboard-Info.plist' under platforms/ios/AAC Cboard/ 
  adding this keys and values
