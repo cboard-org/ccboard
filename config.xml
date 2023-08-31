@@ -25,8 +25,8 @@
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="AndroidInsecureFileModeEnabled" value="true" />
         <preference name="AndroidLaunchMode" value="singleTask" />
-        <preference name="android-minSdkVersion" value="22" />
-        <preference name="android-targetSdkVersion" value="32" />
+        <preference name="android-minSdkVersion" value="24"/>
+        <preference name="android-targetSdkVersion" value="33" />
         <preference name="resizeOnFullScreen" value="false" />
         <config-file after="uses-sdk" parent="/manifest" target="AndroidManifest.xml">
             <queries>
