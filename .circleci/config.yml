@@ -18,6 +18,14 @@ jobs:
             -in  google-services.json.cypher \
             -out google-services.json \
             -k $KEY
+      - run:
+          name: Decrypt the Google services info .plist file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  googleService-info.plist.cipher \
+            -out googleService-info.plist \
+            -k $KEY
       - run: 
           name: Install node and yarn
           command: |
@@ -84,6 +92,14 @@ jobs:
             -in  google-services.json.cypher \
             -out google-services.json \
             -k $KEY
+      - run:
+          name: Decrypt the Google services info .plist file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  googleService-info.plist.cipher \
+            -out googleService-info.plist \
+            -k $KEY      
       - run: 
           name: Install gradle
           command: |
