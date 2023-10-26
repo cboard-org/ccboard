@@ -23,8 +23,8 @@ jobs:
           command: |
             openssl aes-256-cbc -d -md sha256 \
             -pbkdf2 \
-            -in  googleService-info.plist.cipher \
-            -out googleService-info.plist \
+            -in  GoogleService-info.plist.cipher \
+            -out GoogleService-info.plist \
             -k $KEY
       - run: 
           name: Install node and yarn
@@ -97,8 +97,8 @@ jobs:
           command: |
             openssl aes-256-cbc -d -md sha256 \
             -pbkdf2 \
-            -in  googleService-info.plist.cipher \
-            -out googleService-info.plist \
+            -in  GoogleService-info.plist.cipher \
+            -out GoogleService-info.plist \
             -k $KEY      
       - run: 
           name: Install gradle
