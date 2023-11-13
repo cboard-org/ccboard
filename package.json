@@ -38,6 +38,7 @@
     "cordova-plugin-media-capture": "^3.0.3",
     "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-purchase": "git+https://github.com/j3k0/cordova-plugin-purchase.git#v13.0.3",
+    "cordova-plugin-saf-mediastore": "^1.0.10",
     "cordova-plugin-sign-in-with-apple": "^0.1.2",
     "cordova-plugin-statusbar": "^2.4.3",
     "electron-devtools-installer": "^3.1.1",
@@ -133,7 +134,8 @@
         "ANDROID_FIREBASE_PERF_GRADLE_PLUGIN_VERSION": "1.4.2",
         "ANDROID_GRPC_OKHTTP": "1.46.0"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-saf-mediastore": {}
     },
     "platforms": [
       "browser",
