@@ -36,9 +36,11 @@
             </queries>
         </config-file>
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
-            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
             <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+            <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
         </config-file>
         <resource-file src="public/res/values/colors.xml" target="/app/src/main/res/values/colors.xml" />
         <icon background="@color/background" density="ldpi" foreground="public/images/pwa/android/android-launchericon-36-36.png" />
