@@ -35,7 +35,6 @@
     "cordova-plugin-market": "git+https://github.com/xmartlabs/cordova-plugin-market.git",
     "cordova-plugin-iosrtc": "^8.0.3",
     "cordova-plugin-media": "^7.0.0",
-    "cordova-plugin-media-capture": "^3.0.3",
     "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-purchase": "git+https://github.com/j3k0/cordova-plugin-purchase.git#v13.0.3",
     "cordova-plugin-saf-mediastore": "^1.0.10",
