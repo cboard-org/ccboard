@@ -35,7 +35,7 @@
     "cordova-plugin-iosrtc": "^8.0.3",
     "cordova-plugin-media": "^7.0.0",
     "cordova-plugin-network-information": "^3.0.0",
-    "cordova-plugin-purchase": "git+https://github.com/j3k0/cordova-plugin-purchase.git#v13.0.3",
+    "cordova-plugin-purchase": "13.8.6",
     "cordova-plugin-saf-mediastore": "^1.0.10",
     "cordova-plugin-sign-in-with-apple": "^0.1.2",
     "cordova-plugin-statusbar": "^2.4.3",
@@ -73,7 +73,6 @@
         "FACEBOOK_IOS_SDK_VERSION": "11.1.0",
         "FACEBOOK_BROWSER_SDK_VERSION": "v11.0"
       },
-      "cordova-plugin-purchase": {},
       "ionic-plugin-deeplinks": {
         "URL_SCHEME": "cboardorg",
         "DEEPLINK_SCHEME": "https",
@@ -91,8 +90,6 @@
         "DEEPLINK_4_HOST": " ",
         "DEEPLINK_5_SCHEME": " ",
         "DEEPLINK_5_HOST": " "
-      },
-      "cordova-plugin-purchase": {
       },
       "cordova-plugin-iosrtc": {
         "MANUAL_INIT_AUDIO_DEVICE": "FALSE"
@@ -125,7 +122,8 @@
         "ANDROID_GRPC_OKHTTP": "1.46.0"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-saf-mediastore": {}
+      "cordova-plugin-saf-mediastore": {},
+      "cordova-plugin-purchase": {}
     },
     "platforms": [
       "browser",
