@@ -32,7 +32,7 @@
     "cordova-plugin-firebasex": "^16.1.0",
     "cordova-plugin-fullscreen": "^1.3.0",
     "cordova-plugin-market": "git+https://github.com/xmartlabs/cordova-plugin-market.git",
-    "cordova-plugin-iosrtc": "^8.0.3",
+    "cordova-plugin-iosrtc": "^8.0.4",
     "cordova-plugin-media": "^7.0.0",
     "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-purchase": "13.8.6",
