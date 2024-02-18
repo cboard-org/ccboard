@@ -58,7 +58,7 @@ jobs:
           command: |
             export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
-            yarn build
+            yarn build --verbose 
       - persist_to_workspace:
           root: cboard
           paths:
