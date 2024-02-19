@@ -214,19 +214,19 @@ workflows:
             branches:
               only: 
                 - master
-      - build_android:
-          context: ccboard
-          requires:
-            - build_cboard
-          filters:
-            branches:
-              only: 
-                - master
-      - build_electron:
-          context: ccboard
-          requires:
-            - build_cboard
-          filters:
-            branches:
-              only: 
-                - master
+      # - build_android:
+      #     context: ccboard
+      #     requires:
+      #       - build_cboard
+      #     filters:
+      #       branches:
+      #         only: 
+      #           - master
+      # - build_electron:
+      #     context: ccboard
+      #     requires:
+      #       - build_cboard
+      #     filters:
+      #       branches:
+      #         only: 
+      #           - master
