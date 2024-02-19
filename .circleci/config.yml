@@ -37,9 +37,9 @@ jobs:
       - run: 
           name: Sync cboard module 
           command: |
-            git submodule set-branch --branch debug-circleci
+            git submodule--helper set-branch --branch debug-circleci
             git submodule sync
-            git submodule set-branch --branch debug-circleci
+            git submodule--helper set-branch --branch debug-circleci
       - run:
           name: Install cboard
           command: |
