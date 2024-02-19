@@ -1,4 +1,4 @@
 [submodule "cboard"]
 	path = cboard
 	url = git@github.com:cboard-org/cboard.git
-	branch = master
+	branch = debug-circleci
