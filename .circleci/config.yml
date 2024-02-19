@@ -38,12 +38,13 @@ jobs:
           name: Sync cboard module 
           command: |
             git submodule sync
+            git submodule update --init
       - run:
           name: Install cboard
           command: |
             export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
-            git checkout master 
+            git checkout debug-circleci 
             git pull
             yarn install
       - run:
