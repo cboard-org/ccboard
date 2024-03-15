@@ -226,13 +226,21 @@ jobs:
             mkdir /tmp/workspace
             cordova -v
       - run:
+          name: Decrypt the Google services file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  google-services.json.cypher \
+            -out google-services.json \
+            -k $KEY
+      - run:
           name: Decrypt the Google services info .plist file 
           command: |
             openssl aes-256-cbc -d -md sha256 \
             -pbkdf2 \
             -in  GoogleService-info.plist.cipher \
             -out GoogleService-info.plist \
-            -k $KEY      
+            -k $KEY 
       - run:
           name: Install dependencias 
           command: |
@@ -249,8 +257,6 @@ jobs:
           command: |
             cordova -v
             cordova platform add ios --noresources
-            cordova build ios --release --verbose
-            cordova build ios --verbose
             
       
 workflows:
