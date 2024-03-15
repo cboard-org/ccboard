@@ -235,6 +235,13 @@ jobs:
           command: |
             cp -R /tmp/workspace/build/. www
             ls -a www
+      - run:
+          name: Build ios
+          command: |
+            cordova platform add ios --noresources
+            cordova build ios --release --verbose
+            cordova build ios --verbose
+            
       
 workflows:
   version: 2.1
