@@ -203,13 +203,17 @@ jobs:
           path: ./tmp/exe
   build_ios:
     macos:
-      xcode: "15.2.0"
+      xcode: 15.2.0
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
     working_directory: ~/repo
     steps:
       - checkout
+      - run:
+          name: Enable xcode
+          command: |
+            xcode-select --install
       
 workflows:
   version: 2.1
@@ -220,7 +224,7 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - setup-ios
       - build_android:
           context: ccboard
           requires:
@@ -244,4 +248,4 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - setup-ios
