@@ -211,9 +211,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install ios deploy tools 
+          name: Install Node tools 
           command: |
-            brew install ios-deploy
+            nvm alias default node
       - run:
           name: Install cocoapods 
           command: |
