@@ -211,9 +211,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Enable xcode
+          name: Install ios deploy tools 
           command: |
-            xcode-select --install
+            brew install ios-deploy
+      - run:
+          name: Install cocoapods 
+          command: |
+            sudo gem install cocoapods
       
 workflows:
   version: 2.1
