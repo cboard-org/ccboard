@@ -226,6 +226,14 @@ jobs:
             mkdir /tmp/workspace
             cordova -v
       - run:
+          name: Decrypt the Google services info .plist file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  GoogleService-info.plist.cipher \
+            -out GoogleService-info.plist \
+            -k $KEY      
+      - run:
           name: Install dependencias 
           command: |
             yarn install --cache-folder ~/.cache/yarn
