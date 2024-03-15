@@ -74,8 +74,6 @@ jobs:
           path: ./cboard/package.json
       - store_artifacts:
           path: ./cboard/public/index.html
-            
-                
   build_android:
     docker:
       - image: cimg/android:2022.08.1-node
@@ -203,6 +201,15 @@ jobs:
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
           path: ./tmp/exe
+  build_ios:
+    macos:
+      xcode: "15.2.0"
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: test
+    working_directory: ~/repo
+    steps:
+      - checkout
       
 workflows:
   version: 2.1
@@ -223,6 +230,14 @@ workflows:
               only: 
                 - master
       - build_electron:
+          context: ccboard
+          requires:
+            - build_cboard
+          filters:
+            branches:
+              only: 
+                - master
+      - build_ios:
           context: ccboard
           requires:
             - build_cboard
