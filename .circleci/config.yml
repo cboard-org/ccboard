@@ -218,6 +218,23 @@ jobs:
           name: Install cocoapods 
           command: |
             sudo gem install cocoapods
+      - run:
+          name: Install Cordova
+          command: |
+            sudo npm install -g cordova
+            mkdir www
+            mkdir /tmp/workspace
+      - run:
+          name: Install dependencias 
+          command: |
+            yarn install --cache-folder ~/.cache/yarn
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Copy Build
+          command: |
+            cp -R /tmp/workspace/build/. www
+            ls -a www
       
 workflows:
   version: 2.1
