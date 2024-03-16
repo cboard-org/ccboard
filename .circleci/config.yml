@@ -256,7 +256,7 @@ jobs:
           name: Build ios
           command: |
             cordova -v
-            cordova platform add ios --noresources
+            cordova platform add ios --nohooks
             
       
 workflows:
