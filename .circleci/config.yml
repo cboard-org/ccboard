@@ -220,7 +220,7 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - rebranding
       - build_android:
           context: ccboard
           requires:
@@ -228,7 +228,7 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - rebranding
       - build_electron:
           context: ccboard
           requires:
