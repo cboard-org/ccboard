@@ -236,7 +236,7 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - rebranding
       - build_ios:
           context: ccboard
           requires:
