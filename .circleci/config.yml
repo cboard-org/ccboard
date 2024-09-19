@@ -129,9 +129,9 @@ jobs:
             sudo apt-get update && sudo apt-get upgrade
             sudo apt-get install openjdk-17-jdk
       - run:
-          name: Install build-tools 33.0.2
+          name: Install build-tools 34.0.0
           command: |
-            sdkmanager "build-tools;33.0.2"
+            sdkmanager "build-tools;34.0.0"
             sdkmanager --list
       - run:
           name: Build Android 
