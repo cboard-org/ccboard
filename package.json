@@ -35,7 +35,7 @@
     "cordova-plugin-market": "github:xmartlabs/cordova-plugin-market",
     "cordova-plugin-media": "^7.0.0",
     "cordova-plugin-network-information": "^3.0.0",
-    "cordova-plugin-purchase": "13.8.6",
+    "cordova-plugin-purchase": "^13.11.1",
     "cordova-plugin-saf-mediastore": "^1.0.10",
     "cordova-plugin-sign-in-with-apple": "^0.1.2",
     "cordova-plugin-statusbar": "^2.4.3",
