@@ -11,7 +11,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-browser": "^7.0.0",
-    "cordova-plugin-facebook-connect": "3.2.0",
+    "cordova-plugin-fbsdk": "4.1.1",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "electron-devtools-installer": "^3.2.0",
     "properties-parser": "0.3.1"
@@ -29,7 +29,7 @@
     "cordova-plugin-default-browser": "^1.0.0",
     "cordova-plugin-file": "^8.0.1",
     "cordova-plugin-file-opener2": "^2.2.1",
-    "cordova-plugin-firebasex": "^16.1.0",
+    "cordova-plugin-firebasex": "^18.0.0",
     "cordova-plugin-fullscreen": "^1.3.0",
     "cordova-plugin-iosrtc": "^8.0.4",
     "cordova-plugin-market": "github:xmartlabs/cordova-plugin-market",
@@ -61,18 +61,6 @@
       "cordova-plugin-network-information": {},
       "com.lampa.startapp": {},
       "cordova-plugin-androidx-adapter": {},
-      "cordova-plugin-facebook-connect": {
-        "APP_ID": "123456789",
-        "APP_NAME": "myApplication",
-        "FACEBOOK_URL_SCHEME_SUFFIX": " ",
-        "OTHER_APP_SCHEMES": " ",
-        "FACEBOOK_AUTO_LOG_APP_EVENTS": "true",
-        "FACEBOOK_HYBRID_APP_EVENTS": "false",
-        "FACEBOOK_ADVERTISER_ID_COLLECTION": "true",
-        "FACEBOOK_ANDROID_SDK_VERSION": "11.3.0",
-        "FACEBOOK_IOS_SDK_VERSION": "11.1.0",
-        "FACEBOOK_BROWSER_SDK_VERSION": "v11.0"
-      },
       "ionic-plugin-deeplinks": {
         "URL_SCHEME": "cboardorg",
         "DEEPLINK_SCHEME": "https",
@@ -125,11 +113,25 @@
         "GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE": "true",
         "GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_STORAGE": "true",
         "GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_USER_DATA": "true",
-        "GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS": "true"
+        "GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS": "true",
+        "FIREBASE_MESSAGING_IMMEDIATE_PAYLOAD_DELIVERY": "false"
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-saf-mediastore": {},
-      "cordova-plugin-purchase": {}
+      "cordova-plugin-purchase": {},
+      "cordova-plugin-fbsdk": {
+        "APP_ID": "155146678540314",
+        "APP_NAME": "Cboard",
+        "CLIENT_TOKEN": "abcd",
+        "FACEBOOK_URL_SCHEME_SUFFIX": " ",
+        "OTHER_APP_SCHEMES": " ",
+        "FACEBOOK_AUTO_LOG_APP_EVENTS": "true",
+        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "FACEBOOK_ADVERTISER_ID_COLLECTION": "true",
+        "FACEBOOK_ANDROID_SDK_VERSION": "17.0.0",
+        "FACEBOOK_IOS_SDK_VERSION": "17.0.0",
+        "FACEBOOK_BROWSER_SDK_VERSION": "v19.0"
+      }
     },
     "platforms": [
       "browser",
