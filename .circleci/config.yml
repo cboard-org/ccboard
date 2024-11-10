@@ -221,7 +221,7 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - android-release
       - build_android:
           context: ccboard
           requires:
