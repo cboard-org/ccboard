@@ -225,16 +225,16 @@ workflows:
   version: 2.1
   build_cordova:
     jobs:
-      - build_cboard:
-          context: ccboard
-          filters:
-            branches:
-              only: 
-                - android-release
+      # - build_cboard:
+      #     context: ccboard
+      #     filters:
+      #       branches:
+      #         only: 
+      #           - android-release
       - build_android:
           context: ccboard
-          requires:
-            - build_cboard
+          # requires:
+          #   - build_cboard
           filters:
             branches:
               only: 
