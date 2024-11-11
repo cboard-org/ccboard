@@ -241,16 +241,16 @@ workflows:
                 - android-release
       - build_electron:
           context: ccboard
-          requires:
-            - build_cboard
+          # requires:
+          #   - build_cboard
           filters:
             branches:
               only: 
                 - master
       - build_ios:
           context: ccboard
-          requires:
-            - build_cboard
+          # requires:
+          #   - build_cboard
           filters:
             branches:
               only: 
