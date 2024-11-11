@@ -97,7 +97,15 @@ jobs:
             -pbkdf2 \
             -in  GoogleService-info.plist.cipher \
             -out GoogleService-info.plist \
-            -k $KEY      
+            -k $KEY
+      - run:
+          name: Decrypt the keystore file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  ccboard.keystore.cypher \
+            -out ccboard.keystore \
+            -k $KEY    
       - run: 
           name: Install gradle
           command: |
@@ -143,10 +151,11 @@ jobs:
             cordova build android --release --verbose
             cordova build android --verbose
             cp platforms/android/app/build/outputs/bundle/release/app-release.aab ccboard.aab
+            $ANDROID_HOME/build-tools/34.0.0/zipalign -v 4 ccboard.aab cboard.aab
+            $JAVA_HOME/bin/jarsigner -verbose -keypass 'morning ' -sigalg SHA1withRSA -digestalg SHA1 -keystore ccboard.keystore cboard.aab ccboard
             mkdir -p /tmp/apk
             cp -r ccboard.aab /tmp/apk
             cp -r platforms/android/app/build/outputs/apk/debug/app-debug.apk /tmp/apk
-            ls $ANDROID_HOME/build-tools/
       - store_artifacts:
           path: /tmp/apk
           destination: apks
