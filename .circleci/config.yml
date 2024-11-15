@@ -43,6 +43,7 @@ jobs:
       - run:
           name: Create .env file
           command: |
+            cd cboard
             echo "REACT_APP_GOOGLE_FIREBASE_WEB_CLIENT_ID=${REACT_APP_GOOGLE_FIREBASE_WEB_CLIENT_ID}" > .env
       - run:
           name: Install cboard
