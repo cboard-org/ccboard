@@ -65,6 +65,7 @@ jobs:
       - run:
           name: Build cboard
           command: |
+            cat .env
             export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
             yarn build --verbose 
