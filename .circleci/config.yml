@@ -62,12 +62,15 @@ jobs:
             echo "REACT_APP_GOOGLE_FIREBASE_WEB_CLIENT_ID=$REACT_APP_GOOGLE_FIREBASE_WEB_CLIENT_ID" >> .env
             echo "Contents of .env file:"
             cat .env
+            pwd
       - run:
           name: Build cboard
           command: |
-            cat .env
             export NODE_OPTIONS=--max-old-space-size=8192
             cd cboard
+            cat .env
+            ls -la
+            pwd
             yarn build --verbose 
       - persist_to_workspace:
           root: cboard
