@@ -103,7 +103,9 @@ B) On Xcode open AAC Cboard.xcworkspace
 
 In case to deploy for production. Under cordova-util.js from cboard app source replace the FACEBOOK_APP_ID and FACEBOOK_APP_NAME with the production values.
 
-7. In order to allow users to open files created by the Export feature:
+7. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
+
+8. In order to allow users to open files created by the Export feature:
   Edit the plist file 'AAC Cboard-Info.plist' under platforms/ios/AAC Cboard/ 
  adding this keys and values
  ```
@@ -111,6 +113,12 @@ In case to deploy for production. Under cordova-util.js from cboard app source r
  	<true/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+```
+9. In order to allow the app to use the voice in high volume on iPhones:
+   Edit the plist file 'AAC Cboard-Info.plist' under platforms/ios/AAC Cboard/ 
+```
+<key>ManualInitAudioDevice</key>
+<string>TRUE</string>
 ```
 
 ### Create app size report
