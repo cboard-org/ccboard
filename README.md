@@ -85,36 +85,22 @@ C) Follow these setup steps in order:
 D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platforms/ios` (Make sure to use the `.xcworkspace` to work with the cocoapods project )
 
 1.  Select a group for the iOS sign-in certificate.
-2.  Add the environment variables for the 'Google Plus Plugin' to XCODE:
-    Open your Xcode project and select the project from the project navigator.
-    Select the "Build Settings" tab in the main area of the window.
-    Search for "User-Defined" in the search bar.
-    Click the "+" button to add a new user-defined setting.
-    Enter the name of the environment variable you want to set, such as MY_ENV_VAR.
-    Enter the value of the environment variable you want to set, such as my-value.
-    Save the changes.
 
-    set the envs using values from `credentials.plist` file. (Obtain the file from firebase console):
-    IOS_REVERSED_CLIENT_ID
-    IOS_WEB_APPLICATION_CLIENT_ID
-
-    Using this plugin, it is not possible to use the device simulator (at least for now).
-
-3.  Some targets within pods will require enabling 'bitcode', including one in AAC Cboard => libCordova.a
-4.  Set a swift-language-version >= 4.2 . This should be settled on AAC Cboard Target under swift compiler - language Close
-5.  Update to recommended settings and not allow changes on 'always embed swift standards libraries' to not break the voice record feature
+2.  Some targets within pods will require enabling 'bitcode', including one in AAC Cboard => libCordova.a
+3.  Set a swift-language-version >= 4.2 . This should be settled on AAC Cboard Target under swift compiler - language Close
+4.  Update to recommended settings and not allow changes on 'always embed swift standards libraries' to not break the voice record feature
     <img width="998" alt="image" src="https://user-images.githubusercontent.com/21298844/234080729-a93b8d34-87dd-40f1-a168-b6f3abacd039.png">
 
-6.  To enable Facebook sign in the 'fbXXXXXXXXXXXXX' URL Scheme should be registered. In order to do it:
+5.  To enable Facebook sign in the 'fbXXXXXXXXXXXXX' URL Scheme should be registered. In order to do it:
     Under AAC Cboard Target > info > URL TYPES >
     add a new one with our APP bundle identifier and set the 'fbXXXXXXXXXXXXX' for the URL SCHEME field.
     <img width="888" alt="configure_FB_login" src="https://github.com/cboard-org/ccboard/assets/21298844/d306ba8a-d903-4ef2-b6d5-80f221338572">
 
 In case to deploy for production. Under cordova-util.js from cboard app source replace the FACEBOOK_APP_ID and FACEBOOK_APP_NAME with the production values.
 
-7. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
+6. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
 
-8. In order to allow users to open files created by the Export feature:
+7. In order to allow users to open files created by the Export feature:
    Edit the plist file 'AAC Cboard-Info.plist' under platforms/ios/AAC Cboard/
    adding this keys and values
 
@@ -125,7 +111,7 @@ In case to deploy for production. Under cordova-util.js from cboard app source r
 	<true/>
 ```
 
-9. In order to allow the app to use the voice in high volume on iPhones:
+8. In order to allow the app to use the voice in high volume on iPhones:
    Edit the plist file 'AAC Cboard-Info.plist' under platforms/ios/AAC Cboard/
 
 ```
@@ -142,5 +128,4 @@ Follow this steps: https://developer.apple.com/documentation/xcode/reducing-your
 
 Some plugins cause conflict to run Cboard on an IOS simulator. Only in order to test the app delete cordova-plugin-googleplus and cordova-plugin-iosrtc running these commands. Pay attention to don't preserve these changes after the test.
 
-1. `cordova plugin rm cordova-plugin-googleplus --save --variable WEB_APPLICATION_CLIENT_ID=${IOS_WEB_APPLICATION_CLIENT_ID} --variable REVERSED_CLIENT_ID=${IOS_REVERSED_CLIENT_ID}`
-2. `cordova plugin rm cordova-plugin-iosrtc`
+1. `cordova plugin rm cordova-plugin-iosrtc`
