@@ -161,19 +161,15 @@ If you encounter build issues or unexpected behavior with the iOS platform, try 
      cordova platform remove ios
      ```
 
-   ````
-
    - ```bash
-   rm -rf plugins/
-   ````
+     rm -rf plugins/
+     ```
 
    - ```bash
      cordova platform add ios
      ```
 
-   ```
-   - Try build again
-   ```
+   Try build again
 
 > **Note:** After performing these steps, you'll need to make steps again from step D - 6 of ## IOS Platform
 
