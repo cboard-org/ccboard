@@ -112,22 +112,22 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
 6. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
 
 7. In order to allow users to open files created by the Export feature:
-   Edit the plist file 'AAC Cboard-Info.plist' under platforms/ios/AAC Cboard/
+   Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
    adding this keys and values
 
 ```
-   <key>LSSupportsOpeningDocumentsInPlace</key>
-	<true/>
-	<key>UIFileSharingEnabled</key>
-	<true/>
+    <key>LSSupportsOpeningDocumentsInPlace</key>
+    <true/>
+    <key>UIFileSharingEnabled</key>
+    <true/>
 ```
 
 8. In order to allow the app to use the voice in high volume on iPhones:
-   Edit the plist file 'AAC Cboard-Info.plist' under platforms/ios/AAC Cboard/
+   Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
 
 ```
-<key>ManualInitAudioDevice</key>
-<string>TRUE</string>
+    <key>ManualInitAudioDevice</key>
+    <string>TRUE</string>
 ```
 
 ### Create app size report
