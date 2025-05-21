@@ -122,9 +122,19 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
 > - `FACEBOOK_CLIENT_TOKEN`
 > - `FACEBOOK_APP_NAME`
 
-5. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
+5. To use Google analytics plugin GoogleService-info.plist file to the project's root folder or decrypt it using the openssl command stored in the config.yml file:
 
-6. In order to allow users to open files created by the Export feature:
+```bash
+openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  GoogleService-info.plist.cipher \
+            -out GoogleService-info.plist \
+            -k $KEY
+```
+
+6. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
+
+7. In order to allow users to open files created by the Export feature:
    Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
    adding this keys and values
 
@@ -135,7 +145,7 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
     <true/>
 ```
 
-7. In order to allow the app to use the voice in high volume on iPhones:
+8. In order to allow the app to use the voice in high volume on iPhones:
    Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
 
 ```
@@ -143,7 +153,7 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
     <string>TRUE</string>
 ```
 
-8. Start the active scheme with the 'play' button in the left-top corner
+9. Start the active scheme with the 'play' button in the left-top corner
 
 ## iOS Troubleshooting
 
