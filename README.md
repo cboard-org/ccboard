@@ -106,14 +106,12 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
 
 1.  Select a group for the iOS sign-in certificate.
 
-2.  Some targets within pods will require enabling 'bitcode', including one in AAC Cboard => libCordova.a
+2.  Set a swift-language-version >= 4.0 . This should be settled on AAC Cboard Target under swift compiler - language
 
-3.  Set a swift-language-version >= 4.0 . This should be settled on AAC Cboard Target under swift compiler - language
-
-4.  Update to recommended settings and not allow changes on 'always embed swift standards libraries' to not break the voice record feature
+3.  Update to recommended settings and not allow changes on 'always embed swift standards libraries' to not break the voice record feature
     <img width="998" alt="image" src="https://user-images.githubusercontent.com/21298844/234080729-a93b8d34-87dd-40f1-a168-b6f3abacd039.png">
 
-5.  To enable Facebook sign in the 'fbXXXXXXXXXXXXX' URL Scheme should be registered. In order to do it:
+4.  To enable Facebook sign in the 'fbXXXXXXXXXXXXX' URL Scheme should be registered. In order to do it:
     Under AAC Cboard Target > info > URL TYPES >
     add a new one with our APP bundle identifier and set the 'fbXXXXXXXXXXXXX' for the URL SCHEME field.
     <img width="888" alt="configure_FB_login" src="https://github.com/cboard-org/ccboard/assets/21298844/d306ba8a-d903-4ef2-b6d5-80f221338572">
@@ -124,9 +122,9 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
 > - `FACEBOOK_CLIENT_TOKEN`
 > - `FACEBOOK_APP_NAME`
 
-6. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
+5. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
 
-7. In order to allow users to open files created by the Export feature:
+6. In order to allow users to open files created by the Export feature:
    Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
    adding this keys and values
 
@@ -137,7 +135,7 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
     <true/>
 ```
 
-8. In order to allow the app to use the voice in high volume on iPhones:
+7. In order to allow the app to use the voice in high volume on iPhones:
    Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
 
 ```
@@ -145,7 +143,7 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
     <string>TRUE</string>
 ```
 
-9. Start the active scheme with the 'play' button in the left-top corner
+8. Start the active scheme with the 'play' button in the left-top corner
 
 ## iOS Troubleshooting
 
@@ -177,7 +175,7 @@ If you encounter build issues or unexpected behavior with the iOS platform, try 
    - Try build again
    ```
 
-> **Note:** After performing these steps, you'll need to make steps again from step D - 7 of ## IOS Platform
+> **Note:** After performing these steps, you'll need to make steps again from step D - 6 of ## IOS Platform
 
 ### Create app size report
 
