@@ -130,6 +130,38 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
     <string>TRUE</string>
 ```
 
+## iOS Troubleshooting
+
+If you encounter build issues or unexpected behavior with the iOS platform, try the following steps in order:
+
+1. Clean the build folder in Xcode
+
+   - In Xcode, go to Product > Clean Build Folder
+   - Or use keyboard shortcut: Cmd + Shift + K
+   - Try build again
+
+2. Remove iOS platform
+
+   - ```bash
+     cordova platform remove ios
+     ```
+
+   ````
+
+   - ```bash
+   rm -rf plugins/
+   ````
+
+   - ```bash
+     cordova platform add ios
+     ```
+
+   ```
+   - Try build again
+   ```
+
+> **Note:** After performing these steps, you'll need to make steps again from step D - 7 of ## IOS Platform
+
 ### Create app size report
 
 In order to know the size of the app before submitting it to the app store connect.
