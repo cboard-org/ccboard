@@ -85,7 +85,7 @@ C) Follow these setup steps in order:
 1.  Complete all steps from the "Before setup" section above
 2.  Complete all steps from the "One-time setup" section above
 3.  In `config.xml` change the id of the main widget to `com.cboardorg.cboard`
-4.  Run `cordova prepare ios` to set up the initial iOS project structure
+4.  Run `cordova platform add ios` to set up the initial iOS project structure
 
 D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platforms/ios` (Make sure to use the `.xcworkspace` to work with the cocoapods project )
 
