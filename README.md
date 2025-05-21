@@ -72,11 +72,17 @@ In the root folder, you will find the file `settings.json` where are the configu
 
 ## IOS Platform
 
-You can find the documentation [here](https://cordova.apache.org/docs/en/11.x/guide/platforms/ios/index.html)
+A) Follow the cordova documentation [here](https://cordova.apache.org/docs/en/11.x/guide/platforms/ios/index.html)
 
-A) Install cocoapods using `sudo gem install cocoapods`.
+B) If is necessary, install cocoapods using `sudo gem install cocoapods`.
 
-B) On Xcode open AAC Cboard.xcworkspace
+C) Follow these setup steps in order:
+
+1.  Complete all steps from the "Before setup" section above
+2.  Complete all steps from the "One-time setup" section above
+3.  Run `cordova prepare ios` to set up the initial iOS project structure
+
+D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platforms/ios` (Make sure to use the `.xcworkspace` to work with the cocoapods project )
 
 1.  Select a group for the iOS sign-in certificate.
 2.  Add the environment variables for the 'Google Plus Plugin' to XCODE:
