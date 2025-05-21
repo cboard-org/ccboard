@@ -76,9 +76,24 @@ A) Follow the cordova documentation [here](https://cordova.apache.org/docs/en/11
 
 B) If is necessary, install cocoapods using `sudo gem install cocoapods`.
 
-### If run the app in the simulator is needed:
+### Optional: Running the app in iOS simulator
 
-Some plugins cause conflict to run Cboard on an IOS simulator. Only in order to test the app delete cordova-plugin-iosrtc with `cordova plugin rm cordova-plugin-iosrtc`. **Pay attention to don't preserve these changes after the test.**
+If you need to test the app in the iOS simulator, some plugins may cause conflicts. To resolve this:
+
+1. Remove the conflicting plugin temporarily:
+
+   ```bash
+   cordova plugin rm cordova-plugin-iosrtc
+   ```
+
+2. Run your simulator tests
+
+3. **Important:** After testing, remember to restore the plugin for production use:
+   ```bash
+   cordova plugin add cordova-plugin-iosrtc
+   ```
+
+> **Note:** This modification should only be done for simulator testing purposes. Make sure to restore the plugin before committing any changes or building for production.
 
 C) Follow these setup steps in order:
 
