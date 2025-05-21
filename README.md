@@ -130,6 +130,8 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
     <string>TRUE</string>
 ```
 
+9. Start the active scheme with the 'play' button in the left-top corner
+
 ## iOS Troubleshooting
 
 If you encounter build issues or unexpected behavior with the iOS platform, try the following steps in order:
