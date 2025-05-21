@@ -87,7 +87,9 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
 1.  Select a group for the iOS sign-in certificate.
 
 2.  Some targets within pods will require enabling 'bitcode', including one in AAC Cboard => libCordova.a
-3.  Set a swift-language-version >= 4.2 . This should be settled on AAC Cboard Target under swift compiler - language Close
+
+3.  Set a swift-language-version >= 4.0 . This should be settled on AAC Cboard Target under swift compiler - language
+
 4.  Update to recommended settings and not allow changes on 'always embed swift standards libraries' to not break the voice record feature
     <img width="998" alt="image" src="https://user-images.githubusercontent.com/21298844/234080729-a93b8d34-87dd-40f1-a168-b6f3abacd039.png">
 
