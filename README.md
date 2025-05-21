@@ -99,7 +99,11 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
     add a new one with our APP bundle identifier and set the 'fbXXXXXXXXXXXXX' for the URL SCHEME field.
     <img width="888" alt="configure_FB_login" src="https://github.com/cboard-org/ccboard/assets/21298844/d306ba8a-d903-4ef2-b6d5-80f221338572">
 
-In case to deploy for production. Under cordova-util.js from cboard app source under `cordova-util.js` replace the `FACEBOOK_APP_ID`, `FACEBOOK_CLIENT_TOKEN` and `FACEBOOK_APP_NAME` with the production values.
+> **Note:** Before building the app, you must configure the Facebook credentials. Locate the `cordova-util.js` file in the cboard app source and replace the following values with your environment-specific (test/production) credentials:
+>
+> - `FACEBOOK_APP_ID`
+> - `FACEBOOK_CLIENT_TOKEN`
+> - `FACEBOOK_APP_NAME`
 
 6. Before start the build. Open the 'Build Phases' section on Xcode and move crashlytics to the last position. (this is a required step to makethe build)
 
