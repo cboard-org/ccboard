@@ -134,9 +134,3 @@ D) On Xcode open `AAC Cboard.xcworkspace` that is located under `ccboard/platfor
 
 In order to know the size of the app before submitting it to the app store connect.
 Follow this steps: https://developer.apple.com/documentation/xcode/reducing-your-app-s-size#Create-the-app-size-report
-
-### Prepare the app for a run in a simulator
-
-Some plugins cause conflict to run Cboard on an IOS simulator. Only in order to test the app delete cordova-plugin-googleplus and cordova-plugin-iosrtc running these commands. Pay attention to don't preserve these changes after the test.
-
-1. `cordova plugin rm cordova-plugin-iosrtc`
