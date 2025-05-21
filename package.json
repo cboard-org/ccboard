@@ -124,6 +124,7 @@
         "IOS_GOOGLE_SIGIN_VERSION": "7.0.0",
         "IOS_GOOGLE_TAG_MANAGER_VERSION": "8.0.0"
       },
+      "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-saf-mediastore": {},
       "cordova-plugin-purchase": {},
       "cordova-plugin-fbsdk": {
