@@ -79,3 +79,9 @@ typings/
 # visual studio 
 *.njsproj
 *.njsproj.user
+
+# Google Service files
+google-services.json
+
+# Keystores
+*.keystore
