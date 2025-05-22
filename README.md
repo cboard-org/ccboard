@@ -122,7 +122,7 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
 > - `FACEBOOK_CLIENT_TOKEN`
 > - `FACEBOOK_APP_NAME`
 
-5. To use the Google Analytics plugin GoogleService-info.plist file in the project's root folder or decrypt it using the openssl command stored in the config.yml file:
+5. Add `GoogleService-info.plist` and `google-services.json` file in the project's root folder or decrypt them using the openssl commands stored in the config.yml file:
 
 ```bash
 openssl aes-256-cbc -d -md sha256 \
@@ -132,7 +132,15 @@ openssl aes-256-cbc -d -md sha256 \
             -k $KEY
 ```
 
-6. Before starting the build. Open the 'Build Phases' section on Xcode and move Crashlytics to the last position (a required step to make the build). If you miss this step, an error (Cycle inside AAC Cboard; building could produce unreliable results.) appears and causes the build to fail (If you remove the iosRTC plugin, this step is not required). 
+```bash
+openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  google-services.json.cipher \
+            -out google-services.json.plist \
+            -k $KEY
+```
+
+6. Before starting the build. Open the 'Build Phases' section on Xcode and move Crashlytics to the last position (a required step to make the build). If you miss this step, an error (Cycle inside AAC Cboard; building could produce unreliable results.) appears and causes the build to fail (If you remove the iosRTC plugin, this step is not required).
 
 7. To allow users to open files created by the Export feature:
    Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
