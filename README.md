@@ -100,7 +100,24 @@ C) Follow these setup steps in order:
 1.  Complete all steps from the "Before setup" section above
 2.  Complete all steps from the "One-time setup" section above
 3.  In `config.xml` change the id of the main widget to `com.cboardorg.cboard`
-4.  Run `cordova platform add ios` to set up the initial iOS project structure
+4.  Add `GoogleService-info.plist` and `google-services.json` file in the project's root folder or decrypt them using the openssl commands stored in the config.yml file:
+
+```bash
+openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  GoogleService-info.plist.cipher \
+            -out GoogleService-info.plist \
+            -k $KEY
+```
+
+```bash
+openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  google-services.json.cipher \
+            -out google-services.json.plist \
+            -k $KEY
+```
+5.  Run `cordova platform add ios` to set up the initial iOS project structure
 
 D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platforms/ios` (Make sure to use the `.xcworkspace` to work with the cocoapods project )
 
@@ -122,27 +139,9 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
 > - `FACEBOOK_CLIENT_TOKEN`
 > - `FACEBOOK_APP_NAME`
 
-5. Add `GoogleService-info.plist` and `google-services.json` file in the project's root folder or decrypt them using the openssl commands stored in the config.yml file:
+5. Before starting the build. Open the 'Build Phases' section on Xcode and move Crashlytics to the last position (a required step to make the build). If you miss this step, an error (Cycle inside AAC Cboard; building could produce unreliable results.) appears and causes the build to fail (If you remove the iosRTC plugin, this step is not required).
 
-```bash
-openssl aes-256-cbc -d -md sha256 \
-            -pbkdf2 \
-            -in  GoogleService-info.plist.cipher \
-            -out GoogleService-info.plist \
-            -k $KEY
-```
-
-```bash
-openssl aes-256-cbc -d -md sha256 \
-            -pbkdf2 \
-            -in  google-services.json.cipher \
-            -out google-services.json.plist \
-            -k $KEY
-```
-
-6. Before starting the build. Open the 'Build Phases' section on Xcode and move Crashlytics to the last position (a required step to make the build). If you miss this step, an error (Cycle inside AAC Cboard; building could produce unreliable results.) appears and causes the build to fail (If you remove the iosRTC plugin, this step is not required).
-
-7. To allow users to open files created by the Export feature:
+6. To allow users to open files created by the Export feature:
    Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
    Adding these keys and values
 
@@ -153,7 +152,7 @@ openssl aes-256-cbc -d -md sha256 \
     <true/>
 ```
 
-8. To allow the app to use the voice in high volume on iPhones:
+7. To allow the app to use the voice in high volume on iPhones:
    Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
 
 ```
@@ -161,7 +160,7 @@ openssl aes-256-cbc -d -md sha256 \
     <string>TRUE</string>
 ```
 
-9. Start the active scheme with the 'play' button in the top left corner
+8. Start the active scheme with the 'play' button in the top left corner
 
 ## iOS Troubleshooting
 
@@ -189,7 +188,7 @@ If you encounter build issues or unexpected behavior with the iOS platform, try 
 
    Try build again
 
-> **Note:** After performing these steps, you'll need to take steps again from step D-6 of ## IOS Platform
+> **Note:** After performing these steps, you'll need to take steps again from step D-5 of ## IOS Platform
 
 ### Create app size report
 
