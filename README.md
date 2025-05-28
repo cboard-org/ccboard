@@ -16,6 +16,16 @@ Text-to-speach (TTS) support is provided via [`phonegap-plugin-speech-synthesis`
 You will need to modify the next files:
 
 - In `/cboard/package.json` change `"homepage": "https://app.cboard.io"` to `"homepage": "."`
+- optional: if use Windows replace in `/cboard/package.json`  the following code:
+
+ ```js 
+ "build": "craco build  --verbose && sw-precache --config=sw-precache-config.js" 
+ ```
+to 
+ ```js 
+ "build": "craco --max-old-space-size=4096 build  --verbose && sw-precache --config=sw-precache-config.js" 
+ ```
+ 
 - In `/cboard/public/index.html` add `<script src="cordova.js"></script>` below `<head>` tag
 
 ## One-time setup
@@ -29,10 +39,10 @@ You will need to modify the next files:
 
 ## Building Cboard (React project)
 
-You need to build the react.js app, and after that copy un cordova project:
+You need to build the React.js app, and after that, Copy it to cordova project:
 
 1. `cd cboard`
-1. Release `npm run build` / Debug `npm run build-cordova-debug`
+1. Release `yarn build` / Debug `yarn run build-cordova-debug`
 1. `cp -r ./build/* ../www`
 1. `cd ..`
 
@@ -41,6 +51,7 @@ You need to build the react.js app, and after that copy un cordova project:
 Android:
 
 - `cordova run android --emulator`
+- `cordova run android --device`
 
 Electron:
 
