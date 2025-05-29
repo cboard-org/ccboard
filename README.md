@@ -29,10 +29,10 @@ You will need to modify the next files:
 
 ## Building Cboard (React project)
 
-You need to build the react.js app, and after that copy un cordova project:
+You need to build the React.js app, and after that, Copy it to cordova project:
 
 1. `cd cboard`
-1. Release `npm run build` / Debug `npm run build-cordova-debug`
+1. Release `yarn build` / Debug `yarn run build-cordova-debug`
 1. `cp -r ./build/* ../www`
 1. `cd ..`
 
@@ -40,7 +40,8 @@ You need to build the react.js app, and after that copy un cordova project:
 
 Android:
 
-- `cordova run android --emulator`
+- `cordova run android --emulator` run on emulator
+- `cordova run android --device` run on device
 
 Electron:
 
