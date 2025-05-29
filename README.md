@@ -16,16 +16,6 @@ Text-to-speach (TTS) support is provided via [`phonegap-plugin-speech-synthesis`
 You will need to modify the next files:
 
 - In `/cboard/package.json` change `"homepage": "https://app.cboard.io"` to `"homepage": "."`
-- optional: if use Windows replace in `/cboard/package.json`  the following code:
-
- ```js 
- "build": "craco build  --verbose && sw-precache --config=sw-precache-config.js" 
- ```
-to 
- ```js 
- "build": "craco --max-old-space-size=4096 build  --verbose && sw-precache --config=sw-precache-config.js" 
- ```
- 
 - In `/cboard/public/index.html` add `<script src="cordova.js"></script>` below `<head>` tag
 
 ## One-time setup
