@@ -40,8 +40,8 @@ You need to build the React.js app, and after that, Copy it to cordova project:
 
 Android:
 
-- `cordova run android --emulator`
-- `cordova run android --device`
+- `cordova run android --emulator` run on emulator
+- `cordova run android --device` run on device
 
 Electron:
 
