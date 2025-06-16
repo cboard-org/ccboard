@@ -129,9 +129,10 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
 3.  Update to recommended settings and do not allow changes on 'always embed Swift standards libraries' to not break the voice record feature (this step is necessary only if iosrtc plugin is present)
     <img width="998" alt="image" src="https://user-images.githubusercontent.com/21298844/234080729-a93b8d34-87dd-40f1-a168-b6f3abacd039.png">
 
-4.  To enable Facebook sign-in, the 'fbXXXXXXXXXXXXX' URL Scheme should be registered. To do it:
+4.  To enable Facebook and Google sign-in, the 'fbXXXXXXXXXXXXX' and the Google Reversed Client Id URL Scheme should be registered. To do it:
     Under AAC Cboard Target > info > URL TYPES >
     Add a new one with our APP bundle identifier and set the 'fbXXXXXXXXXXXXX' for the URL SCHEME field.
+    Add a new one with our REVERSED_CLIENT_ID
     <img width="888" alt="configure_FB_login" src="https://github.com/cboard-org/ccboard/assets/21298844/d306ba8a-d903-4ef2-b6d5-80f221338572">
 
 > **Note:** Before building the app, you must configure the Facebook credentials. Locate the `cordova-util.js` file in the cboard app source and replace the following values with your environment-specific (test/production) credentials:
