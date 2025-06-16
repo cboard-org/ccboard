@@ -114,7 +114,7 @@ openssl aes-256-cbc -d -md sha256 \
 ```bash
 openssl aes-256-cbc -d -md sha256 \
             -pbkdf2 \
-            -in  google-services.json.cipher \
+            -in  google-services.json.cypher \
             -out google-services.json.plist \
             -k $KEY
 ```
