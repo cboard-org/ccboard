@@ -163,9 +163,105 @@ jobs:
       - store_artifacts:
           path: /tmp/apk
           destination: apks
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - apk/cboard.aab
+  deploy_android_to_playstore:
+    docker:
+      - image: cimg/android:2022.08.1-node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp
+      - run:
+          name: Install Python and dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y python3 python3-pip
+            pip3 install google-api-python-client oauth2client
+      - run:
+          name: Create service account key file
+          command: |
+            echo $GOOGLE_PLAY_SERVICE_ACCOUNT_KEY | base64 -d > service-account-key.json
+      - run:
+          name: Upload AAB to Google Play Console
+          command: |
+            python3 -c "
+            import json
+            import sys
+            from googleapiclient.discovery import build
+            from oauth2client.service_account import ServiceAccountCredentials
+            from googleapiclient.http import MediaFileUpload
+
+            # Configuration
+            PACKAGE_NAME = '$ANDROID_PACKAGE_NAME'
+            AAB_FILE = '/tmp/apk/cboard.aab'
+            SERVICE_ACCOUNT_FILE = 'service-account-key.json'
+            TRACK = 'internal'  # Can be 'internal', 'alpha', 'beta', or 'production'
+
+            # Authenticate
+            credentials = ServiceAccountCredentials.from_json_keyfile_name(
+                SERVICE_ACCOUNT_FILE,
+                scopes=['https://www.googleapis.com/auth/androidpublisher']
+            )
+
+            service = build('androidpublisher', 'v3', credentials=credentials)
+
+            try:
+                # Start edit session
+                edit_request = service.edits().insert(body={}, packageName=PACKAGE_NAME)
+                result = edit_request.execute()
+                edit_id = result['id']
+                print(f'Created edit with id: {edit_id}')
+
+                # Upload AAB
+                media = MediaFileUpload(AAB_FILE, mimetype='application/octet-stream')
+                bundle_response = service.edits().bundles().upload(
+                    editId=edit_id,
+                    packageName=PACKAGE_NAME,
+                    media_body=media
+                ).execute()
+
+                version_code = bundle_response.get('versionCode')
+                print(f'Uploaded bundle with version code: {version_code}')
+
+                # Assign to track
+                track_response = service.edits().tracks().update(
+                    editId=edit_id,
+                    track=TRACK,
+                    packageName=PACKAGE_NAME,
+                    body={
+                        'track': TRACK,
+                        'releases': [
+                            {
+                                'name': f'Release {version_code}',
+                                'versionCodes': [version_code],
+                                'status': 'completed'
+                            }
+                        ]
+                    }
+                ).execute()
+
+                print(f'Release created for track: {TRACK}')
+
+                # Commit changes
+                commit_request = service.edits().commit(
+                    editId=edit_id,
+                    packageName=PACKAGE_NAME
+                ).execute()
+
+                print(f'Edit committed successfully!')
+
+            except Exception as e:
+                print(f'Error: {e}')
+                sys.exit(1)
+            "
   build_electron:
-    executor:
-      name: win/default
+    machine:
+      image: windows-server-2022-gui:current
+      resource_class: windows.medium
     working_directory: ~/repo
     steps:
       - checkout
@@ -226,7 +322,6 @@ jobs:
       - checkout
       
 workflows:
-  version: 2.1
   build_cordova:
     jobs:
       - build_cboard:
@@ -234,11 +329,19 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - updated-pipeline
       - build_android:
           context: ccboard
           requires:
             - build_cboard
+          filters:
+            branches:
+              only: 
+                - master
+      - deploy_android_to_playstore:
+          context: ccboard
+          requires:
+            - build_android
           filters:
             branches:
               only: 
@@ -250,7 +353,7 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - updated-pipeline
       - build_ios:
           context: ccboard
           requires:
