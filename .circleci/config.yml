@@ -299,10 +299,12 @@ jobs:
             Get-ChildItem .
       - run:
           name: Add Electron Platform
+          shell: powershell.exe
           command: |
             cordova platform add electron@3.0.0 --noresources
       - run:
           name: Build Electron App
+          shell: powershell.exe
           command: |
             cordova build electron --release 
             mkdir ./tmp/exe
