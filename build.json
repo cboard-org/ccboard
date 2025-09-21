@@ -1,15 +1,19 @@
 {
     "electron": {
-        "windows": {  
-        	"package": [
+        "windows": {
+            "package": [
                 "portable",
                 "nsis"
             ],
             "signing": {
                 "release": {
-                    "certificateFile": "./win-cert.pfx",
-                    "certificatePassword": "morning"
+                    "certificateFile": ".\\win-cert.pfx",
+                    "certificatePassword": "morning",
+                    "publisherName": "Cboard Org",
+                    "signingHashAlgorithms": ["sha256"],
+                    "timestampingServer": "http://timestamp.digicert.com"
                 }
-            }}
+            }
+        }
     }
 }
