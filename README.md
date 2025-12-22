@@ -118,6 +118,7 @@ openssl aes-256-cbc -d -md sha256 \
             -out google-services.json.plist \
             -k $KEY
 ```
+
 5.  Run `cordova platform add ios` to set up the initial iOS project structure
 
 D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platforms/ios` (Make sure to use the `.xcworkspace` to work with the cocoapods project )
@@ -143,9 +144,11 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
 
 5. Before starting the build. Open the 'Build Phases' section on Xcode and move Crashlytics to the last position (a required step to make the build). If you miss this step, an error (Cycle inside AAC Cboard; building could produce unreliable results.) appears and causes the build to fail (If you remove the iosRTC plugin, this step is not required).
 
-6. To allow users to open files created by the Export feature:
-   Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
-   Adding these keys and values
+6. Check the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`.
+
+- Add these keys and values
+
+To allow users to open files created by the Export feature:
 
 ```
     <key>LSSupportsOpeningDocumentsInPlace</key>
@@ -154,12 +157,22 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
     <true/>
 ```
 
-7. To allow the app to use the voice in high volume on iPhones:
-   Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
+To allow the app to use the voice in high volume on iPhones:
+Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
 
 ```
     <key>ManualInitAudioDevice</key>
     <string>TRUE</string>
+```
+
+- Ensure that the app version and build number are correctly set in the plist file to match your release:
+
+```
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string> <!-- Set your app version here -->
+
+    <key>CFBundleVersion</key>
+    <string>1</string> <!-- Set your build number here -->
 ```
 
 8. Start the active scheme with the 'play' button in the top left corner
