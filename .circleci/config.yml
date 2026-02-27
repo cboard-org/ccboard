@@ -5,8 +5,8 @@ orbs:
 
 jobs:
   build_cboard:
-    machine:
-      image: ubuntu-2004:2024.01.1
+    docker:
+      - image: cimg/node:22.14.0
     resource_class: large
     working_directory: ~/repo
     steps:
@@ -217,7 +217,7 @@ jobs:
           path: ./tmp/exe
   build_ios:
     macos:
-      xcode: "15.2.0"
+      xcode: "26.3.0"
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
