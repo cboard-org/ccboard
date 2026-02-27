@@ -202,9 +202,6 @@ jobs:
             cordova build electron --release 
             mkdir ./tmp/exe
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
-            cordova build electron --debug
-            Get-ChildItem ./platforms/electron/build/*.exe | Rename-Item -NewName { $_.BaseName + ' - Debug' + $_.Extension}
-            Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
       - store_artifacts:
           path: ./tmp/exe
   build_ios:
