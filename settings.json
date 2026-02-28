@@ -8,5 +8,9 @@
         "width": 800,
         "autoHideMenuBar":true,
         "icon": "/www/favicon.ico"
+    },
+    "forceCodeSigning": false,
+    "win": {
+        "sign": null
     }
 }
