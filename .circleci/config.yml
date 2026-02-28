@@ -258,6 +258,7 @@ jobs:
       - run:
           name: Install and update CocoaPods
           command: |
+            sudo gem update --system 4.0.7
             sudo gem install cocoapods
             pod setup
             pod repo update
