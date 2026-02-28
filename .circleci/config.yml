@@ -258,7 +258,6 @@ jobs:
       - run:
           name: Install CocoaPods dependencies
           command: |
-            cd platforms/ios
             pod install --repo-update --verbose
             sudo gem install cocoapods-dependencies
             pod dependencies
