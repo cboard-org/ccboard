@@ -256,9 +256,12 @@ jobs:
             cp -R /tmp/workspace/build/. www
             ls -a www
       - run:
+          name: Add iOS Platform
+          command: |
+            cordova platform add ios --noresources
+      - run:
           name: Install CocoaPods dependencies
           command: |
-            pod install --repo-update --verbose
             sudo gem install cocoapods-dependencies
             pod dependencies
             pod update --verbose
@@ -268,10 +271,6 @@ jobs:
             sudo gem install cocoapods
             pod setup
             pod repo update
-      - run:
-          name: Add iOS Platform
-          command: |
-            cordova platform add ios --noresources
       - run:
           name: Copy GoogleService-info.plist
           command: |
