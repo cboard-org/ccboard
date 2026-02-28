@@ -256,12 +256,6 @@ jobs:
             cp -R /tmp/workspace/build/. www
             ls -a www
       - run:
-          name: Install CocoaPods dependencies
-          command: |
-            sudo gem install cocoapods-dependencies
-            pod dependencies
-            pod update --verbose
-      - run:
           name: Install and update CocoaPods
           command: |
             sudo gem install cocoapods
