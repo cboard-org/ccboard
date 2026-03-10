@@ -293,22 +293,25 @@ jobs:
           command: |
             cp GoogleService-info.plist "platforms/ios/AACCboard/"
       - run:
-          name: Boot iOS Simulator
-          command: |
-            SIM_UDID=$(xcrun simctl list devices available | grep "iPhone 16 Plus" | grep "18\." | grep -Eo '[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}' | head -1)
-            echo "Booting simulator: $SIM_UDID"
-            xcrun simctl boot "$SIM_UDID"
-      - run:
           name: Build iOS App
           command: |
-            cordova build ios -- \
+            cordova prepare ios
+            cd platforms/ios
+            xcodebuild \
+              -workspace AACCboard.xcworkspace \
+              -scheme AACCboard \
+              -configuration Debug \
+              -sdk iphonesimulator \
+              -destination "platform=iOS Simulator,OS=18.6,name=iPhone 16 Plus" \
+              SYMROOT=$(pwd)/build \
               CODE_SIGN_IDENTITY="" \
               CODE_SIGNING_REQUIRED=NO \
               CODE_SIGNING_ALLOWED=NO \
-              DEVELOPMENT_TEAM=""
+              DEVELOPMENT_TEAM="" \
+              build
             mkdir -p /tmp/ipa
-            find platforms/ios/build -name "*.app" -exec cp -r {} /tmp/ipa/ \; 2>/dev/null || true
-            find platforms/ios/build -name "*.ipa" -exec cp {} /tmp/ipa/ \; 2>/dev/null || true
+            find build -name "*.app" -exec cp -r {} /tmp/ipa/ \; 2>/dev/null || true
+            find build -name "*.ipa" -exec cp {} /tmp/ipa/ \; 2>/dev/null || true
       - store_artifacts:
           path: /tmp/ipa
           destination: ipa
