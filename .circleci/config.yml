@@ -287,7 +287,7 @@ jobs:
           name: Install CocoaPods dependencies
           command: |
             cd platforms/ios
-            pod install --repo-update --verbose
+            pod install --repo-update
       - run:
           name: Copy GoogleService-info.plist
           command: |
@@ -295,10 +295,11 @@ jobs:
       - run:
           name: Build iOS App
           command: |
-            cordova build ios --device -- \
+            cordova build ios -- \
               CODE_SIGN_IDENTITY="" \
               CODE_SIGNING_REQUIRED=NO \
-              CODE_SIGNING_ALLOWED=NO
+              CODE_SIGNING_ALLOWED=NO \
+              DEVELOPMENT_TEAM=""
             mkdir -p /tmp/ipa
             find platforms/ios/build -name "*.app" -exec cp -r {} /tmp/ipa/ \; 2>/dev/null || true
             find platforms/ios/build -name "*.ipa" -exec cp {} /tmp/ipa/ \; 2>/dev/null || true
