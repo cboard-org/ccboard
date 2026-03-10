@@ -225,6 +225,22 @@ jobs:
             -out GoogleService-info.plist \
             -k $KEY
       - run:
+          name: Decrypt the Google services file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  google-services.json.cypher \
+            -out google-services.json \
+            -k $KEY
+      - run:
+          name: Decrypt the keystore file 
+          command: |
+            openssl aes-256-cbc -d -md sha256 \
+            -pbkdf2 \
+            -in  ccboard.keystore.cypher \
+            -out ccboard.keystore \
+            -k $KEY    
+      - run:
           name: Install Node 22.14.0
           command: |
             export NVM_DIR="$HOME/.nvm"
@@ -244,10 +260,11 @@ jobs:
           command: |
             npm install -g cordova
             mkdir www
+            cordova --version
       - run:
           name: Install dependencies
           command: |
-            npm i
+            npm install
       - attach_workspace:
           at: /tmp/workspace
       - run:
