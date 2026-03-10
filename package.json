@@ -119,10 +119,10 @@
         "FIREBASE_MESSAGING_IMMEDIATE_PAYLOAD_DELIVERY": "false",
         "IOS_USE_PRECOMPILED_FIRESTORE_POD": "false",
         "IOS_FCM_ENABLED": "true",
-        "IOS_FIREBASE_SDK_VERSION": "11.2.0",
-        "IOS_FIREBASE_IN_APP_MESSAGING_VERSION": "11.2.0-beta",
-        "IOS_GOOGLE_SIGIN_VERSION": "7.0.0",
-        "IOS_GOOGLE_TAG_MANAGER_VERSION": "8.0.0"
+        "IOS_FIREBASE_SDK_VERSION": "12.3.0",
+        "IOS_FIREBASE_IN_APP_MESSAGING_VERSION": "12.3.0-beta",
+        "IOS_GOOGLE_SIGIN_VERSION": "9.0.0",
+        "IOS_GOOGLE_TAG_MANAGER_VERSION": "9.0.0"
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-saf-mediastore": {},
