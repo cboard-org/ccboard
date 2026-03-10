@@ -282,7 +282,7 @@ jobs:
       - run:
           name: Add iOS Platform
           command: |
-            cordova platform add ios --noresources --verbose
+            cordova platform add ios --noresources
       - run:
           name: Install CocoaPods dependencies
           command: |
@@ -291,7 +291,7 @@ jobs:
       - run:
           name: Copy GoogleService-info.plist
           command: |
-            cp GoogleService-info.plist "platforms/ios/AAC Cboard/"
+            cp GoogleService-info.plist "platforms/ios/AACCboard/"
       - run:
           name: Build iOS App
           command: |
