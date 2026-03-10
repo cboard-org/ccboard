@@ -296,6 +296,7 @@ jobs:
           name: Build iOS App
           command: |
             cordova build ios -- \
+              -destination "platform=iOS Simulator,OS=18.6,name=iPhone 16 Plus" \
               CODE_SIGN_IDENTITY="" \
               CODE_SIGNING_REQUIRED=NO \
               CODE_SIGNING_ALLOWED=NO \
