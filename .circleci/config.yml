@@ -282,7 +282,7 @@ jobs:
       - run:
           name: Add iOS Platform
           command: |
-            cordova platform add ios --noresources
+            cordova platform add ios --noresources --verbose
       - run:
           name: Install CocoaPods dependencies
           command: |
