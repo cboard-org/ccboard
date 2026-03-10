@@ -309,7 +309,7 @@ jobs:
               CODE_SIGNING_ALLOWED=NO \
               DEVELOPMENT_TEAM="" \
               ONLY_ACTIVE_ARCH=NO \
-              build 2>&1 | tee /tmp/xcodebuild.log; EXIT=${PIPESTATUS[0]}; tail -100 /tmp/xcodebuild.log; exit $EXIT
+              build
             mkdir -p /tmp/ipa
             echo "=== Build output ==="
             find build -name "*.app" -type d 2>/dev/null || true
