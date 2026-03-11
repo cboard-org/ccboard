@@ -310,11 +310,11 @@ jobs:
               DEVELOPMENT_TEAM="" \
               ONLY_ACTIVE_ARCH=NO \
               build
-            ls -a platforms/ios/build/
+            ls -a build/
             mkdir -p /tmp/ipa
             echo "=== Build output ==="
             find build -name "*.app" -exec cp -r {} /tmp/ipa/ \; 2>/dev/null || true
-            find platforms/ios/build -name "*.ipa" -exec cp {} /tmp/ipa/ \; 2>/dev/null || true
+            find build -name "*.ipa" -exec cp {} /tmp/ipa/ \; 2>/dev/null || true
       - store_artifacts:
           path: /tmp/ipa
           destination: ipa
