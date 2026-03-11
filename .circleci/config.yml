@@ -200,7 +200,7 @@ jobs:
           name: Build Electron App
           command: |
             $env:CSC_IDENTITY_AUTO_DISCOVERY = "false"
-            $env:WIN_CSC_KEY_PASSWORD = ""
+            $env:WIN_CSC_KEY_PASSWORD = $CSC_KEY_PASSWORD
             cordova build electron --release 
             mkdir ./tmp/exe
             Copy-Item ./platforms/electron/build/*.exe ./tmp/exe
