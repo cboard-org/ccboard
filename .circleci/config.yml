@@ -312,15 +312,8 @@ jobs:
               build
             mkdir -p /tmp/ipa
             echo "=== Build output ==="
-            find build -name "*.app" -type d 2>/dev/null || true
-            APP_PATH=$(find build -name "AACCboard.app" -type d | head -1)
-            if [ -n "$APP_PATH" ]; then
-              cp -r "$APP_PATH" /tmp/ipa/
-              echo "Copied $APP_PATH to /tmp/ipa/"
-            else
-              echo "No .app found - listing build dir:"
-              find build -maxdepth 4 2>/dev/null || true
-            fi
+            find build -name "*.app" -exec cp -r {} /tmp/ipa/ \; 2>/dev/null || true
+            find build -name "*.ipa" -exec cp {} /tmp/ipa/ \; 2>/dev/null || true
       - store_artifacts:
           path: /tmp/ipa
           destination: ipa
