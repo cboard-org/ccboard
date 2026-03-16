@@ -148,14 +148,6 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
 
 - Add these keys and values
 
-To allow the app to use the voice in high volume on iPhones:
-Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
-
-```
-    <key>ManualInitAudioDevice</key>
-    <string>TRUE</string>
-```
-
 - Ensure that the app version and build number are correctly set in the plist file to match your release:
 
 ```

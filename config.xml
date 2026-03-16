@@ -101,6 +101,9 @@
         <config-file target="*-Info.plist" parent="UIFileSharingEnabled">
             <true/>
         </config-file>
+        <config-file target="*-Info.plist" parent="ManualInitAudioDevice">
+            <string>TRUE</string>
+        </config-file>
     </platform>
     <platform name="electron">
         <icon src="\www\images\artwork\logo_1x.png" target="app" />
