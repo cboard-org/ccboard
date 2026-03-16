@@ -333,6 +333,7 @@ workflows:
             branches:
               only: 
                 - master
+                - improve-ios-ci-build
       - build_android:
           context: ccboard
           requires:
@@ -357,3 +358,4 @@ workflows:
             branches:
               only: 
                 - master
+                - improve-ios-ci-build
