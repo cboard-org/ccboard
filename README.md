@@ -148,15 +148,6 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
 
 - Add these keys and values
 
-To allow users to open files created by the Export feature:
-
-```
-    <key>LSSupportsOpeningDocumentsInPlace</key>
-    <true/>
-    <key>UIFileSharingEnabled</key>
-    <true/>
-```
-
 To allow the app to use the voice in high volume on iPhones:
 Edit the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`
 
