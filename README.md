@@ -100,7 +100,11 @@ C) Follow these setup steps in order:
 
 1.  Complete all steps from the "Before setup" section above
 2.  Complete all steps from the "One-time setup" section above
-3.  In `config.xml` change the id of the main widget to `com.cboardorg.cboard`
+3.  The iOS bundle ID (`com.cboardorg.cboard`) differs from the Android default in `config.xml` (`com.unicef.cboard`). The CI pipeline patches this automatically. For local iOS builds, run:
+    ```bash
+    sed -i '' 's/id="com.unicef.cboard"/id="com.cboardorg.cboard"/' config.xml
+    ```
+    before running `cordova platform add ios`. Remember to revert before Android builds.
 4.  Add `GoogleService-info.plist` and `google-services.json` file in the project's root folder or decrypt them using the openssl commands stored in the config.yml file:
 
 ```bash
