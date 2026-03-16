@@ -146,8 +146,6 @@ D) On Xcode, open `AAC Cboard.xcworkspace` that is located under `ccboard/platfo
 
 6. Check the plist file `AAC Cboard-Info.plist` under `platforms/ios/AAC Cboard/`.
 
-- Add these keys and values
-
 - Ensure that the app version and build number are correctly set in the plist file to match your release:
 
 ```
