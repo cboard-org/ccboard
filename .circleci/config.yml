@@ -357,6 +357,7 @@ workflows:
             branches:
               only: 
                 - master
+                - connect-ios-build-to-appstore
       - build_android:
           context: ccboard
           requires:
@@ -381,3 +382,4 @@ workflows:
             branches:
               only: 
                 - master
+                - connect-ios-build-to-appstore
