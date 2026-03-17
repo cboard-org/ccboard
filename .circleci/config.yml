@@ -293,6 +293,19 @@ jobs:
           command: |
             cordova platform add ios --noresources
       - run:
+          name: Fix xcconfig signing identifiers
+          command: |
+            sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Distribution/CODE_SIGN_IDENTITY = Apple Distribution/g' \
+              platforms/ios/cordova/build-release.xcconfig
+            sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Distribution/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Distribution/g' \
+              platforms/ios/cordova/build-release.xcconfig
+            sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Developer/CODE_SIGN_IDENTITY = Apple Development/g' \
+              platforms/ios/cordova/build.xcconfig
+            sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Developer/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Development/g' \
+              platforms/ios/cordova/build.xcconfig
+            sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 10\.2/IPHONEOS_DEPLOYMENT_TARGET = 16.0/g' \
+              platforms/ios/cordova/build.xcconfig
+      - run:
           name: Remove keyboard plugin (iOS incompatible)
           command: |
             cordova plugin remove cordova-plugin-ionic-keyboard --nosave
