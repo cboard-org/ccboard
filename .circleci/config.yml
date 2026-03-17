@@ -210,9 +210,6 @@ jobs:
   build_ios:
     macos:
       xcode: "26.3.0"
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: test
     working_directory: ~/repo
     steps:
       - checkout
@@ -233,13 +230,19 @@ jobs:
             -out google-services.json \
             -k $KEY
       - run:
-          name: Decrypt the keystore file 
+          name: Decrypt the keystore file
           command: |
             openssl aes-256-cbc -d -md sha256 \
             -pbkdf2 \
             -in  ccboard.keystore.cypher \
             -out ccboard.keystore \
-            -k $KEY    
+            -k $KEY
+      - run:
+          name: Decode App Store Connect API Key
+          command: |
+            mkdir -p ~/.appstoreconnect/private_keys
+            echo "$ASC_PRIVATE_KEY" | base64 --decode > ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8
+            chmod 600 ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8
       - run:
           name: Install Node 22.14.0
           command: |
@@ -298,8 +301,14 @@ jobs:
           command: |
             cp GoogleService-info.plist "platforms/ios/AACCboard/"
       - run:
+          name: Set Team ID in ExportOptions.plist
+          command: |
+            /usr/libexec/PlistBuddy -c "Add :teamID string $APPLE_TEAM_ID" ExportOptions.plist || \
+            /usr/libexec/PlistBuddy -c "Set :teamID $APPLE_TEAM_ID" ExportOptions.plist
+      - run:
           name: Build iOS App
           command: |
+            REPO_ROOT=$(pwd)
             cordova prepare ios
             cd platforms/ios
             xcodebuild \
@@ -309,19 +318,31 @@ jobs:
               -sdk iphoneos \
               -destination "generic/platform=iOS" \
               -archivePath $(pwd)/build/AACCboard.xcarchive \
-              CODE_SIGN_IDENTITY="" \
-              CODE_SIGNING_REQUIRED=NO \
-              CODE_SIGNING_ALLOWED=NO \
-              DEVELOPMENT_TEAM="" \
+              -allowProvisioningUpdates \
+              -authenticationKeyID "$ASC_KEY_ID" \
+              -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+              DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
               ONLY_ACTIVE_ARCH=NO \
               archive
-            APP_PATH=$(find build/AACCboard.xcarchive -name "AACCboard.app" -type d | head -1)
-            echo "Found app at: $APP_PATH"
-            mkdir -p /tmp/ipa/Payload
-            cp -r "$APP_PATH" /tmp/ipa/Payload/
-            cd /tmp/ipa
-            zip -r AACCboard.ipa Payload/
-            echo "IPA created: $(ls -lh /tmp/ipa/AACCboard.ipa)"
+            xcodebuild -exportArchive \
+              -archivePath build/AACCboard.xcarchive \
+              -exportPath /tmp/ipa \
+              -exportOptionsPlist "$REPO_ROOT/ExportOptions.plist" \
+              -allowProvisioningUpdates \
+              -authenticationKeyID "$ASC_KEY_ID" \
+              -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+            echo "Export/upload complete:"
+            ls -lh /tmp/ipa/
+      - run:
+          name: Upload to TestFlight
+          command: |
+            IPA_PATH=$(find /tmp/ipa -name "*.ipa" | head -1)
+            echo "Uploading IPA: $IPA_PATH"
+            xcrun transporter -m upload \
+              -f "$IPA_PATH" \
+              -apiKey "$ASC_KEY_ID" \
+              -apiIssuer "$ASC_ISSUER_ID" \
+              -apiKeyPath ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8
       - store_artifacts:
           path: /tmp/ipa
           destination: ipa
