@@ -298,6 +298,29 @@ jobs:
             /usr/libexec/PlistBuddy -c "Add :teamID string $APPLE_TEAM_ID" ExportOptions.plist || \
             /usr/libexec/PlistBuddy -c "Set :teamID $APPLE_TEAM_ID" ExportOptions.plist
       - run:
+          name: Import iOS Distribution Certificate
+          command: |
+            # Create isolated keychain
+            security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+            security list-keychains -s build.keychain $(security list-keychains | xargs)
+            security default-keychain -s build.keychain
+            security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+            security set-keychain-settings -t 3600 -u build.keychain
+
+            # Decode and import the distribution certificate
+            echo "$IOS_DISTRIBUTION_CERT_P12" | base64 --decode > /tmp/distribution.p12
+            security import /tmp/distribution.p12 \
+              -k build.keychain \
+              -P "$IOS_DISTRIBUTION_CERT_PASSWORD" \
+              -T /usr/bin/codesign \
+              -T /usr/bin/xcodebuild
+            security set-key-partition-list \
+              -S apple-tool:,apple: \
+              -s -k "$KEYCHAIN_PASSWORD" build.keychain
+
+            # Verify the cert is visible
+            security find-identity -v -p codesigning build.keychain
+      - run:
           name: Build iOS App
           command: |
             REPO_ROOT=$(pwd)
@@ -306,10 +329,6 @@ jobs:
             cordova prepare ios
 
             # Patch xcconfigs AFTER prepare (prepare overwrites them)
-            sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Distribution/CODE_SIGN_IDENTITY = Apple Development/g' \
-              platforms/ios/cordova/build-release.xcconfig
-            sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Distribution/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Development/g' \
-              platforms/ios/cordova/build-release.xcconfig
             sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Developer/CODE_SIGN_IDENTITY = Apple Development/g' \
               platforms/ios/cordova/build.xcconfig
             sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Developer/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Development/g' \
