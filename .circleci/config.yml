@@ -354,8 +354,13 @@ jobs:
               -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
               DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
               CODE_SIGN_STYLE=Automatic \
+              CODE_SIGN_IDENTITY="Apple Distribution" \
               ONLY_ACTIVE_ARCH=NO \
               archive
+
+            # Inject teamID into ExportOptions.plist so Automatic signing resolves unambiguously
+            sed -i '' "s|<key>signingStyle</key>|<key>teamID</key><string>$APPLE_TEAM_ID</string><key>signingStyle</key>|g" \
+              "$REPO_ROOT/ExportOptions.plist"
 
             xcodebuild -exportArchive \
               -archivePath build/AACCboard.xcarchive \
