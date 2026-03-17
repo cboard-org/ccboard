@@ -311,13 +311,12 @@ jobs:
               DEVELOPMENT_TEAM="" \
               ONLY_ACTIVE_ARCH=NO \
               archive
-            xcodebuild -exportArchive \
-              -archivePath build/AACCboard.xcarchive \
-              -exportPath /tmp/ipa \
-              -exportOptionsPlist ../../ExportOptions.plist \
-              CODE_SIGN_IDENTITY="" \
-              CODE_SIGNING_REQUIRED=NO \
-              CODE_SIGNING_ALLOWED=NO
+            APP_PATH=$(find build/AACCboard.xcarchive -name "AACCboard.app" -type d | head -1)
+            echo "Found app at: $APP_PATH"
+            mkdir -p /tmp/ipa/Payload
+            cp -r "$APP_PATH" /tmp/ipa/Payload/
+            cd /tmp/ipa
+            zip -r AACCboard.ipa Payload/
             echo "IPA created: $(ls -lh /tmp/ipa/AACCboard.ipa)"
       - store_artifacts:
           path: /tmp/ipa
