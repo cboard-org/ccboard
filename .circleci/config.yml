@@ -290,6 +290,10 @@ jobs:
           command: |
             cordova platform add ios --noresources
       - run:
+          name: Remove keyboard plugin (iOS incompatible)
+          command: |
+            cordova plugin remove cordova-plugin-ionic-keyboard --nosave
+      - run:
           name: Copy GoogleService-info.plist
           command: |
             cp GoogleService-info.plist "platforms/ios/AACCboard/"
