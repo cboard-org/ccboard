@@ -230,14 +230,6 @@ jobs:
             -out google-services.json \
             -k $KEY
       - run:
-          name: Decrypt the keystore file
-          command: |
-            openssl aes-256-cbc -d -md sha256 \
-            -pbkdf2 \
-            -in  ccboard.keystore.cypher \
-            -out ccboard.keystore \
-            -k $KEY
-      - run:
           name: Decode App Store Connect API Key
           command: |
             mkdir -p ~/.appstoreconnect/private_keys
@@ -293,19 +285,6 @@ jobs:
           command: |
             cordova platform add ios --noresources
       - run:
-          name: Fix xcconfig signing identifiers
-          command: |
-            sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Distribution/CODE_SIGN_IDENTITY = Apple Distribution/g' \
-              platforms/ios/cordova/build-release.xcconfig
-            sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Distribution/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Distribution/g' \
-              platforms/ios/cordova/build-release.xcconfig
-            sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Developer/CODE_SIGN_IDENTITY = Apple Development/g' \
-              platforms/ios/cordova/build.xcconfig
-            sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Developer/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Development/g' \
-              platforms/ios/cordova/build.xcconfig
-            sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 10\.2/IPHONEOS_DEPLOYMENT_TARGET = 16.0/g' \
-              platforms/ios/cordova/build.xcconfig
-      - run:
           name: Remove keyboard plugin (iOS incompatible)
           command: |
             cordova plugin remove cordova-plugin-ionic-keyboard --nosave
@@ -322,7 +301,22 @@ jobs:
           name: Build iOS App
           command: |
             REPO_ROOT=$(pwd)
+
+            # Prepare (regenerates xcconfig files from config.xml)
             cordova prepare ios
+
+            # Patch xcconfigs AFTER prepare (prepare overwrites them)
+            sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Distribution/CODE_SIGN_IDENTITY = Apple Development/g' \
+              platforms/ios/cordova/build-release.xcconfig
+            sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Distribution/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Development/g' \
+              platforms/ios/cordova/build-release.xcconfig
+            sed -i '' 's/CODE_SIGN_IDENTITY = iPhone Developer/CODE_SIGN_IDENTITY = Apple Development/g' \
+              platforms/ios/cordova/build.xcconfig
+            sed -i '' 's/CODE_SIGN_IDENTITY\[sdk=iphoneos\*\] = iPhone Developer/CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Development/g' \
+              platforms/ios/cordova/build.xcconfig
+            sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 10\.2/IPHONEOS_DEPLOYMENT_TARGET = 16.0/g' \
+              platforms/ios/cordova/build.xcconfig
+
             cd platforms/ios
             xcodebuild \
               -workspace AACCboard.xcworkspace \
@@ -332,34 +326,28 @@ jobs:
               -destination "generic/platform=iOS" \
               -archivePath $(pwd)/build/AACCboard.xcarchive \
               -allowProvisioningUpdates \
+              -authenticationKeyPath "$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8" \
               -authenticationKeyID "$ASC_KEY_ID" \
               -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
               DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
               CODE_SIGN_STYLE=Automatic \
-              CODE_SIGN_IDENTITY="Apple Distribution" \
               ONLY_ACTIVE_ARCH=NO \
               archive
+
             xcodebuild -exportArchive \
               -archivePath build/AACCboard.xcarchive \
               -exportPath /tmp/ipa \
               -exportOptionsPlist "$REPO_ROOT/ExportOptions.plist" \
               -allowProvisioningUpdates \
+              -authenticationKeyPath "$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8" \
               -authenticationKeyID "$ASC_KEY_ID" \
               -authenticationKeyIssuerID "$ASC_ISSUER_ID"
-            echo "Export/upload complete:"
+
+            echo "Archive and export complete:"
             ls -lh /tmp/ipa/
-      - run:
-          name: Upload to TestFlight
-          command: |
-            IPA_PATH=$(find /tmp/ipa -name "*.ipa" | head -1)
-            echo "Uploading IPA: $IPA_PATH"
-            xcrun transporter -m upload \
-              -f "$IPA_PATH" \
-              -apiKey "$ASC_KEY_ID" \
-              -apiIssuer "$ASC_ISSUER_ID"
       - store_artifacts:
-          path: /tmp/ipa
-          destination: ipa
+          path: /Users/distiller/repo/platforms/ios/build/AACCboard.xcarchive
+          destination: archive
       
 workflows:
   version: 2.1
